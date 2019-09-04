@@ -1,1 +1,1 @@
-git status --ignored -s | cut -c 4-
+git check-ignore *
