@@ -1,0 +1,16 @@
+Credentials cache: API:4433
+        Principal: dpuente-@42MADRID.COM
+
+  Issued                Expires               Principal
+Sep  2 15:01:30 2019  Sep  3 01:01:30 2019  krbtgt/42MADRID.COM@42MADRID.COM
+Sep  2 15:01:30 2019  Sep  3 01:01:30 2019  HTTP/student-storage.42madrid.com@42MADRID.COM
+Credentials cache: API:4433
+        Principal: dpuente-@42MADRID.COM
+
+  Issued                Expires               Principal
+Sep  2 17:00:05 2019  Sep  3 02:59:57 2019  krbtgt/42MADRID.COM@42MADRID.COM
+Credentials cache: API:4433
+        Principal: dpuente-@42MADRID.COM
+
+  Issued                Expires               Principal
+Sep  2 17:34:01 2019  Sep  3 03:34:01 2019  krbtgt/42MADRID.COM@42MADRID.COM
