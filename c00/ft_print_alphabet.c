@@ -3,7 +3,7 @@
 
 void ft_print_alphaber(void){
     char c;
-    for(c = 'a'; c <= 'z'; ++c){
+    for(c = 'a'; c <= 'z'; c++){
         write(1, &c, 1);
 
     }
