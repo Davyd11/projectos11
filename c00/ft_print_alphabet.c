@@ -1,9 +1,11 @@
-    #include <stdio.h>
-    int main()
-    {
-        char c;
-        for(c = 'a'; c <= 'z'; ++c)
-           printf("%c ", c);
-        
-        return 0;
+#include <stdio.h>
+#include <unistd.h>
+
+void ft_print_alphaber(void){
+    char c;
+    for(c = 'a'; c <= 'z'; ++c){
+        write(1, &c, 1);
+
     }
+} 
+int main(){ft_print_alphaber();}
