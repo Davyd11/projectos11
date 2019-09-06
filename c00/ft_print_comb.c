@@ -1,4 +1,4 @@
-#include <stdio.h>
+
 #include <unistd.h>
 
 void ft_print_numbers(void){
@@ -7,7 +7,7 @@ void ft_print_numbers(void){
     char* n = "0123456789";
     while (i <= 9) {
         j = i+1;
-        while ( j <= 9) {
+        while (j <= 9){
             k = j+1;
             while ( k <= 9) {
                 write(1,&n[i],1);
