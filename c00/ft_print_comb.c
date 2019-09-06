@@ -3,14 +3,22 @@
 
 void ft_print_numbers(void){
     int i, j, k;
-    for (i = 0; i <= 9; i++) {
-        for (j = i+1; j <= 9; j++) {
-            for (k = j+1; k <= 9; k++) {
-                printf("%d%d%d, ", i, j, k); // (it can't be use de function printf, so we must use write instead.) 
-                                            //  Works but creates a comma and a space at the end !!!!
+    char space = ' ';
+    char* n = "0123456789";
+    while (i <= 9) {
+        j = i+1;
+        while ( j <= 9) {
+            k = j+1;
+            while ( k <= 9) {
+                write(1,&n[i],1);
+                write(1,&n[j],1); 
+                write(1,&n[k],1);
+                write(1,", ",1);
+                write(1,&space,1);
+                k++;
             }
+            j++;
         }
+        i++;
     }
 }
-
-int main(void){ft_print_numbers();}
