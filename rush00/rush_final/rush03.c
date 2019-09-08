@@ -6,7 +6,7 @@
 /*   By: dpuente- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 11:49:00 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/09/08 16:36:59 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/09/08 16:54:32 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	suelo(int y, int base, int x)
 	if (y > 1)
 	{
 		ft_putchar('\n');
-		ft_putchar('C');
+		ft_putchar('A');
 		while (base < x - 2 && y > 1)
 		{
 			ft_putchar('B');
@@ -47,7 +47,7 @@ void	suelo(int y, int base, int x)
 		}
 		if (y > 1 && x > 1)
 		{
-			ft_putchar('A');
+			ft_putchar('C');
 		}
 	}
 }
