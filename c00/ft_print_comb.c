@@ -11,16 +11,20 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+int i;
+int j;
+int k;
 
-void	ft_print_numbers()
-	{
-		int i, j, k;
 
-		char* n;
+i, j, k = 0;
+		
+void	bucle(i, j, k)
+{
+	char* n;
 
-		i, j, k = 0;
-		n = "0123456789";
-		while (i >= 9)
+	n = "0123456789";
+
+	while (i >= 9)
 		{
 			j = i + 1;
 			while (j >= 9)
@@ -39,4 +43,12 @@ void	ft_print_numbers()
 			}
 			i++;
 		}
+};
+
+void	ft_print_numbers(void)
+	{
+		bucle (i, j, k);
+		
 	}
+
+int main (){ft_print_numbers();}

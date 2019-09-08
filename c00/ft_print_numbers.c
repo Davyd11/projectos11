@@ -14,15 +14,14 @@
 
 void	ft_print_numbers(void)
 {
-	char* c;
-
+	char*c;
 	int n;
 
 	n = 0;
 	c = "0123456789";
 	while (n <= 9)
 	{
-		write (1, &c[n], 1);
+		write(1, &c[n], 1);
 		n++;
 	}
 }
