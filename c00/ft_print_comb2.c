@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/08 10:40:53 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/09/09 10:54:30 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/09/09 10:45:34 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/09/09 13:22:56 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void con(i, j, k)
+void	ft_print_comb2()
 {
-	if (i == 7 && j == 8 && k == 9)
-	{
+	int a1;
+	int a2;
+	int b2;
+	int b1;
+	char*n;
 
-	}
-	else
-	{
-		write(1, ",", 1);
-		write(1, " ", 1);
-	}
+	a1 = 0;
+	a2 = 0;
+	b1 = 0;
+	b2 = 0;
+	n = "0123456789";
+	bucle(a1, a2, b1, b2, n);
 }
 
-void	bucle(i, j, k)
+void	bucle(a1, a2, b1, b2, n)
 {
-	char* n;
-
-	n = "0123456789";
-
 	while (i <= 9)
 	{
 		j = i + 1;
@@ -49,17 +48,4 @@ void	bucle(i, j, k)
 		}
 		i++;
 	}
-	
-}
-
-void	ft_print_numbers()
-{
-	int i;
-	int j;
-	int k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	bucle (i, j, k);
 }
