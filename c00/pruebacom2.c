@@ -12,60 +12,50 @@
 
 #include <unistd.h>
 
-void par_a(int a1, int a2, char* n, int ww)
+void printpar1(int b1, int b2, char* n)
+{
+    write(1, &n[b1], 1);
+    write(1, &n[b2], 1);
+    write(1, " ", 1);
+}    
+void par_a(int a1, int a2, char* n, int ww, int b1, int b2)//funciona imprimirndo las combinaciones posibles del par de la derecha 
 {
     while (a1 <= 9)
 	{
         a2 = a1 + 1;
         while (a2 <= 9)
         {
+            printpar1(b1, b2, n);
             write(1, &n[a1], 1);
             write(1, &n[a2], 1);
-            write (1, " ", 1);
+            write(1, ",", 1);
+            write(1, " ", 1);
             a2++;
         }
         a1++;
+        a2 = 0;
         ww = a1;
+        printpar1(b1, b2, n);
         write(1, &n[a1], 1);
         write(1, &n[ww], 1);
-        write (1, " ", 1);
+        write(1, ",", 1);
+        write(1, " ", 1);
 	}
+    a1 = 0;
+    b2++;
 }
 
-void	bucle(int a1, int a2, int b1, int b2, int ww)
+void	bucle(int a1, int a2, int b1, int b2)
 {
     char* n;
+    int ww;
 
+    ww = 0;
     n = "0123456789";
-    par_a(a1, a2, n, ww);
-	/*while (a1 <= 9)
-	{   if ()
-        {
-            a2 = a1 + 1;
-            while (a2 <= 9)
-            {
-                
-                while (b1 <= 9)
-                {
-                    b2 = b1 + 1;
-                    while (b2 <= 9)
-                    {
-                        write(1, &n[a1], 1);
-                        write(1, &n[a2], 1);
-                        write (1, " ", 1);
-                        write(1, &n[b1], 1);
-                        write(1, &n[b2], 1);
-                        write (1, ",", 1);
-                        write (1, " ", 1);
-                        b2++;
-                    }
-                    b1++;
-                }
-                a2++;
-            }
-        }
-		a1++;
-	}*/
+    while (b1 <= 9 && b2 <= 9)
+    {
+        par_a(a1, a2, n, ww, b1, b2);
+    }
 }
 
 void	ft_print_comb2()
@@ -74,16 +64,14 @@ void	ft_print_comb2()
 	int a2;
 	int b2;
 	int b1;
-    int ww;
 	
 
 	a1 = 0;
 	a2 = 0;
 	b1 = 0;
 	b2 = 0;
-    ww = 0;
 	
-	bucle(a1, a2, b1, b2, ww);
+	bucle(a1, a2, b1, b2);
 }
 
 int main(){ft_print_comb2();}
