@@ -23,8 +23,16 @@ void printnumb(int a1, int a2, int b1, int b2)
     write(1, " ", 1);
     write(1, &n[b1], 1);
     write(1, &n[b2], 1);
-    write(1, ",", 1);
-    write(1, " ", 1);
+    if (a1 == 9 && a2 == 8)
+    {
+       write(1, ",", 0);
+    }
+    else 
+    {
+        write(1, ",", 1);
+        write(1, " ", 1);
+    }
+
 }
 
 void seleccion(int a1, int a2, int b1, int b2)
@@ -64,10 +72,6 @@ void	bucle(int a1, int a2, int b1, int b2)
         a1++;
         a2 = 0;
     }
-    
-    
-            
-    
 }
 
 void	ft_print_comb2()
