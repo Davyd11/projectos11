@@ -12,8 +12,12 @@
 
 #include <unistd.h>
 
-void printnumb(int a1, int a2, int b1, int b2, char* n)
+void printnumb(int a1, int a2, int b1, int b2)
 {
+    char* n;
+
+    n = "0123456789";
+
     write(1, &n[a1], 1);
     write(1, &n[a2], 1);
     write(1, " ", 1);
@@ -23,32 +27,47 @@ void printnumb(int a1, int a2, int b1, int b2, char* n)
     write(1, " ", 1);
 }
 
+void seleccion(int a1, int a2, int b1, int b2)
+{
+    int par1;
+    int par2;
+
+    par1 = a1 * 10 + a2;
+    par2 = b1 * 10 + b2;
+    if (par1<par2)
+    {
+        printnumb(a1, a2, b1, b2);
+    }
+}
+
 void	bucle(int a1, int a2, int b1, int b2)
 {
-    char* n;
-
-    n = "0123456789";
-
-    while (a1 <= 9 )
+    while (a1 <= 9)
     {
-        a2 = a1 + 1;
-        while (a2 <= 9 )
+        while(a2 <= 9)
         {
-            b1 = a2 + 1;
             while (b1 <= 9 )
             {
+                b2 = b1;
+                seleccion(a1, a2, b1, b2);
                 b2 = b1 + 1;
                 while (b2 <= 9 )
                 {
-                    printnumb(a1, a2, b1, b2, n);
+                    seleccion(a1, a2, b1, b2);
                     b2++;
                 }
                 b1++;
             }
             a2++;
+            b1 = 0;
         }
         a1++;
+        a2 = 0;
     }
+    
+    
+            
+    
 }
 
 void	ft_print_comb2()
