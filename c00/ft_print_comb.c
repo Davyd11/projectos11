@@ -6,17 +6,17 @@
 /*   By: dpuente- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 10:40:53 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/09/09 10:54:30 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/09/10 16:35:00 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void con(i, j, k)
+void	con(int i, int j, int k)
 {
 	if (i == 7 && j == 8 && k == 9)
 	{
-
+		write(1, " ", 0);
 	}
 	else
 	{
@@ -25,12 +25,11 @@ void con(i, j, k)
 	}
 }
 
-void	bucle(i, j, k)
+void	bucle(int i, int j, int k)
 {
-	char* n;
+	char*n;
 
 	n = "0123456789";
-
 	while (i <= 9)
 	{
 		j = i + 1;
@@ -49,10 +48,9 @@ void	bucle(i, j, k)
 		}
 		i++;
 	}
-	
 }
 
-void	ft_print_numbers()
+void	ft_print_numbers(void)
 {
 	int i;
 	int j;
@@ -61,5 +59,5 @@ void	ft_print_numbers()
 	i = 0;
 	j = 0;
 	k = 0;
-	bucle (i, j, k);
+	bucle(i, j, k);
 }
