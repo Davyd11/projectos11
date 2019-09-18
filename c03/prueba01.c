@@ -14,5 +14,8 @@ int ft_strncmp(char *s1, char *s2, unsigned int n)
 
 int main (void)
 {
-    printf(ft_strncmp("hola que tal", "hola", 4));
+	char p[] = {"hola"};
+	char j[] = {"David"};
+
+	printf(ft_strncmp());//saber funcionamiento y ver como hacer llamada a accion
 }
