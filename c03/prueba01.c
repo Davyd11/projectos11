@@ -1,4 +1,5 @@
-int ft_strncmp(char *s1, char *s2, unsigned int n)
+#include<stdio.h>
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int count;
 
@@ -11,5 +12,33 @@ int ft_strncmp(char *s1, char *s2, unsigned int n)
 	{
 		count++;
 	}
+	/*while (s2[count] != '\0' && count < n - 1)
+	{
+		count++;
+	}*/
 	return (s1[count] - s2[count]);
+}
+
+int main()
+{
+    int result;
+
+    // comparing strings str1 and str2
+    result = ft_strncmp("asdf", "asdf", 4);
+    printf("strcmp(str1, str2) = %d\n", result);
+
+    // comparing strings str1 and str3
+    result = ft_strncmp("asde", "asdf", 4);
+    printf("strcmp(str1, str3) = %d\n", result);
+    
+    result = ft_strncmp("asdg", "asdf", 4);
+    printf("strcmp(str1, str3) = %d\n", result);
+    
+    result = ft_strncmp("asdf", "asdf", 3);
+    printf("strcmp(str1, str3) = %d\n", result);
+
+    result = ft_strncmp("asde", "asdf", 3);
+    printf("strcmp(str1, str3) = %d\n", result);
+    
+    return 0;
 }

@@ -1,19 +1,31 @@
-char *ft_strcat(char *dest, char *src) //el funcionamiento tiene que(introducir las variables en un array que declares como destino)
+#include <stdio.h>
+char *ft_strncat(char *dest, char *src, unsigned int nb)
 {
-    int n;
-    int j;
+	int n;
+	int j;
 
-    n = 0;
-    j = 0;
-    while (src[n] != '\0')
-    {
-        n++;
-    }
-    while (src[j] != '\0')
-    {
-        dest[n] = src[j];
-        j++;
-        n++;
-    }
-    return (dest);
+	n = 0;
+	j = 0;
+	while (dest[n] != '\0')
+	{
+		n++;
+	}
+	while (j < nb)
+	{
+		dest[n] = src[j];
+		n++;
+		j++;
+	}
+	dest[n] = '\0';
+	return (dest);
+}
+
+int main(void) {
+    
+    char dest[10] = "holaa";
+    char src[] = "pepe";
+	
+	ft_strncat(dest, src, 2);
+    printf("%s\n", dest);
+    return 0;
 }
