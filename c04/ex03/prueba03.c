@@ -25,7 +25,7 @@ int     ft_atoi(char *str)
           i++;
       if (str[i] == '-')
           menos = 1;
-          bucle2(str, i, sali);
+	 	  bucle2(str, i, sali);
           if (menos == 1)
              return (-sali);
           else
