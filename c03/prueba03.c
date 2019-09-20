@@ -2,5 +2,5 @@
 
 int main(int c, char **text)
 {
-    printf("%s", *(text+1));
+    printf("%s", *(text));
 }
