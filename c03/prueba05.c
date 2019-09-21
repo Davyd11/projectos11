@@ -79,8 +79,19 @@ char	*ft_strcapitalize(char *str)
 	return (str);
 }
 
-int main ()
+/*int main ()
 {
 	char p[] = {"Z::T%T7~:}L1wg^V{"};
 	printf("%s", ft_strcapitalize(p));
+}*/
+
+
+
+int main()
+{
+	int n;
+	
+	int a = (int*) malloc(n*sizeof(int));
+	int a[2] = {1, 2};
+	printf("%c", a);
 }
