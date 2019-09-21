@@ -21,6 +21,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 
 int main()
 {
+<<<<<<< HEAD
     int result;
 
     // comparing strings str1 and str2
@@ -42,3 +43,10 @@ int main()
     
     return 0;
 }
+=======
+	char p[] = {"hola"};
+	char j[] = {"David"};
+
+	printf(ft_strncmp());//saber funcionamiento y ver como hacer llamada a accion
+}
+>>>>>>> 5e1b4bb15612ebd60ac0e4ed37500fbb6ad14348
