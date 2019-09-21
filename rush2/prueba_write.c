@@ -14,5 +14,5 @@ int main ()
 
     p = read(ar, buf, 12);
     buf[12] = '\0';
-    printf ("%c", buf[2]);
-}
+    printf ("%c", buf[]);
+}` 
