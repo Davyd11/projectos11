@@ -5,36 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 16:38:39 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/09/10 19:41:38 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/09/23 19:09:46 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/09/23 19:10:18 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_putstr(char *str)
 {
-	write(1, &c, 1);
-}
+	int n;
 
-void	bucle(int nb)
-{
-	if (nb < 0)
+	n = 0;
+	while (str[n] != '\0')
 	{
-		ft_putchar('-');
-		bucle(nb * (-1));
+		write(1, &(str[n]), 1);
+		n++;
 	}
-	else
-	{
-		if (nb >= 10)
-		{
-			bucle(nb / 10);
-		}
-		ft_putchar((nb % 10) + '0');
-	}
-}
-
-void	ft_putnbr(int nb)
-{
-	bucle(nb);
 }
