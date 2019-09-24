@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/23 15:42:54 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/09/24 19:26:54 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/09/24 15:54:52 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/09/24 17:44:58 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	factorial(int num)
+int	ft_is_prime(int nb)
 {
-	if (num == 0)
-		return (1);
-	return (num * factorial(num - 1));
-}
+	int number;
+	int resul;
 
-int	ft_recursive_factorial(int nb)
-{
-	if (nb == 0)
-		return (1);
-	else if (nb < 0)
+	resul = 0;
+	number = 2;
+	if (nb == 1 || nb < 0)
 		return (0);
-	else
-	{
-		return (factorial(nb));
-	}
-	return (factorial(nb));
+	else if (nb > 0)
+		while (number != nb)
+		{
+			resul = nb % number;
+			if (resul == 0)
+				return (0);
+			number++;
+		}
+	return (1);
 }

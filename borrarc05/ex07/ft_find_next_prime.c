@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/23 15:42:54 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/09/24 19:26:54 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/09/24 16:29:42 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/09/24 17:49:02 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	factorial(int num)
+int	ft_is_prime(int nb)
 {
-	if (num == 0)
-		return (1);
-	return (num * factorial(num - 1));
+	int number;
+	int resul;
+
+	resul = 0;
+	number = 2;
+	if (nb == 1 || nb < 0)
+		return (0);
+	else if (nb > 0)
+		while (number != nb)
+		{
+			resul = nb % number;
+			if (resul == 0)
+				return (0);
+			number++;
+		}
+	return (1);
 }
 
-int	ft_recursive_factorial(int nb)
+int	ft_find_next_prime(int nb)
 {
-	if (nb == 0)
-		return (1);
-	else if (nb < 0)
-		return (0);
+	if (ft_is_prime(nb) == 1)
+		return (nb);
 	else
-	{
-		return (factorial(nb));
-	}
-	return (factorial(nb));
+		return (ft_find_next_prime(nb + 1));
 }

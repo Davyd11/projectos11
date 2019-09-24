@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/23 15:42:54 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/09/24 19:26:54 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/09/24 12:36:08 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/09/24 14:12:25 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	factorial(int num)
+int	ft_fibonacci(int index)
 {
-	if (num == 0)
-		return (1);
-	return (num * factorial(num - 1));
-}
-
-int	ft_recursive_factorial(int nb)
-{
-	if (nb == 0)
-		return (1);
-	else if (nb < 0)
+	if (index < 0)
+		return (-1);
+	else if (index == 0)
 		return (0);
-	else
-	{
-		return (factorial(nb));
-	}
-	return (factorial(nb));
+	else if (index == 1)
+		return (1);
+	else if (index > 46)
+		return (0);
+	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 }
