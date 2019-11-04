@@ -1,24 +1,19 @@
-/*# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_memset                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dpuente- <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/11/04 11:36:50 by dpuente-          #+#    #+#              #
-/*   Updated: 2019/11/04 12:48:22 by dpuente-         ###   ########.fr       */
-/*#                                                                              #
-# **************************************************************************** # */
-#include <stdio.h>
-
+#include <stdlib.h>
 void	*ft_memset(void *b ,int c, size_t len)
 {
-	unsigned char	*ptr;
+	char	*ptr;
 
-	ptr = (unsigned char*)b;
+	if (b == NULL)
+	{
+		return(NULL);
+	}
+
+	ptr = b;
 	while (len-- > 0)
 	{
-		*(ptr++) = (unsigned char)c;
+		*ptr = c;
+		ptr++;
 	}
 	return(b);
 }
+int main (){}
