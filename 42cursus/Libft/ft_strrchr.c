@@ -1,29 +1,25 @@
 #include <stdio.h>
 
-void *ft_strrchr(char* str, int character)
+char	*ft_strrchr(const char *str, int c)
 {
-    int p;
     int n;
 
     n = 0;
-    p = -1;
     while (str[n] != '\0')
     {
-        if (str[n] == character)
-        {
-            p = n;
-        }
         n++;
     }
-    if (p  == -1)
-    {
-        return (NULL);
-    }
-    return (p);
+	while (str[n] != c)
+	{
+		if (n <= 0)
+			return (0);
+		n--;
+	}
+	return (str + n);
 }
 int main ()
 {
-    char caracter = 'i';
-    char string[] = "hola que tal estamos";
-    printf ("%d", ft_strrchr(string, caracter));
+    char caracter = '.';
+    char string[] = "hola. que tal .estamos";
+    printf ("%s", ft_strrchr(string, caracter));
 }

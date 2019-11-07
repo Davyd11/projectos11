@@ -10,7 +10,7 @@ int ft_memcmp(const void *str1, const void *str2, size_t n)
     p = 0;
     resul = 0;
     s1 = (unsigned char *)str1;
-    s2 = (unsigned char *)str2; // I had to create two variables, I´cant use them directly or not whith my knowlege
+    s2 = (unsigned char *)str2; // I had to create two variables, I´cant use them directly or no hith my knowlege
 
     while (n--)
     {
