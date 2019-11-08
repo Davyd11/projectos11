@@ -11,7 +11,7 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		n++;
 	}
-	if (!(src = malloc(sizeof(char) * (n + 1)))) /* WHY THE  EXCLAMATION SIGN*/
+	if (!(src = malloc(sizeof(char) * (n + 1)))) /* explanation1 */
 		return (NULL);
 	i = 0;
 	while (start <= len) /*From number start to len*/
@@ -30,3 +30,7 @@ int main ()
 
 	printf("%s", ft_substr(source, 4, 8));
 }
+/* Explanation1 : The use of the exclamation, if the action malloc
+is null the condition will return NULL but instead if the 
+action is not NULL vaule it will create that space using malloc
+and witout wasiting space in other condition*/
