@@ -7,9 +7,9 @@ char	*ft_strdup(char *src)
 	int		size;
 
 	size = 0;
-	while (src[size])
+	while (src[size]) /* Mesure the string */
 		++size;
-	if (!(new = malloc(sizeof(char) * (size + 1))))
+	if (!(new = malloc(sizeof(char) * (size + 1)))) /* WHY THE  EXCLAMATION SIGN*/
 		return (NULL);
 	i = 0;
 	while (src[i])
@@ -28,3 +28,6 @@ int main()
 	char* target = ft_strdup(source);
 	printf("%s", target);
 }
+/* Explanation: strdup just reserve a espace in memory 
+ but a the same time it asign a value to that memory it reserved 
+ previusly*/
