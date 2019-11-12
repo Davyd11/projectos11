@@ -6,16 +6,15 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:00:02 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/12 11:04:19 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:35:59 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	int j;
+	int		j;
 	char	*ptr;
 
 	j = 0;
@@ -23,7 +22,6 @@ void	*ft_memset(void *b, int c, size_t len)
 	{
 		return (NULL);
 	}
-
 	ptr = b;
 	while (len-- > 0)
 	{

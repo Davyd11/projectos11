@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 11:00:26 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/12 11:01:52 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:32:06 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t len)
 {
-	char	*ptr;
+	char		*ptr;
 	const char	*rtp;
 
 	ptr = dest;
