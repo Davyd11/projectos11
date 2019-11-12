@@ -1,19 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 10:45:43 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/12 10:46:12 by dpuente-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
-int ft_isascii(int c)
+
+int	ft_isascii(int c)
 {
-    if ((c > 0) && (c < 127))
-    {
-        return(1);
-    }
-    else
-    {
-        return(0);
-    }
-}
-int main ()
-{
-    printf("%d",ft_isascii('z'));
-    printf("%d",ft_isascii('Z'));
-    printf("%d",ft_isascii('1'));
-    printf("%d",ft_isascii('9'));
+	if ((c > 0) && (c < 127))
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }

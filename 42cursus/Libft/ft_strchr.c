@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 11:04:35 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/12 11:04:36 by dpuente-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
 char	*ft_strchr(const char *str, int c)
@@ -9,10 +21,4 @@ char	*ft_strchr(const char *str, int c)
 		str++;
 	}
 	return ((char*)str);
-}
-int main ()
-{
-    char caracter = '.';
-    char string[] = "hola. que tal .estamos";
-    printf ("%s", ft_strchr(string, caracter));
 }

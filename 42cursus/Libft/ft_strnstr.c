@@ -1,14 +1,26 @@
-#include  <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 11:07:23 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/12 11:07:56 by dpuente-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
 
 char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
 	unsigned int pos;
 	unsigned int i;
 
-    pos = 0;
+	pos = 0;
 	if (!*to_find)
 		return ((char*)str);
-        
+
 	while (str[pos] != '\0' && (size_t)pos < len)
 	{
 		if (str[pos] == to_find[0])
@@ -23,13 +35,4 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 		++pos;
 	}
 	return (0);
-}
-int main(void) {
-    char *searchingFor = "it";
-    char *in = "la da\ndoo a da\nnow here comes the stack\nok there it was.\n";
-
-    printf("found: %s\n", ft_strnstr(in, searchingFor, 80) ? "yes" : "no");
-    printf("found: %s\n", ft_strnstr(in, searchingFor, 5) ? "yes" : "no");
-    printf("found: %s\n", ft_strnstr(in, searchingFor, 5) ? "yes" : "no");
-    return 0;
 }

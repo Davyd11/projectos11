@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 11:04:58 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/12 11:05:00 by dpuente-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
+
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	i;
@@ -24,15 +37,4 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	}
 	dest[i] = '\0';
 	return (res);
-}
-
-int main()
-{
-	char src[10]	= "ab121";
-	char dest[10]	= "12123123";
-
-	size_t 			nb = 8;
-	unsigned int 	nb2 = 8;
-	printf("Str: %u", ft_strlcat(dest, src, nb2));
-	return (0);
 }

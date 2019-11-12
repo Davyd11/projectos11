@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 11:08:11 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/12 11:08:21 by dpuente-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
 char	*ft_strrchr(const char *str, int c)
 {
-    int n;
+	int n;
 
-    n = 0;
-    while (str[n] != '\0')
-    {
-        n++;
-    }
+	n = 0;
+	while (str[n] != '\0')
+	{
+		n++;
+	}
 	while (str[n] != c)
 	{
 		if (n <= 0)
@@ -16,10 +28,4 @@ char	*ft_strrchr(const char *str, int c)
 		n--;
 	}
 	return (str + n);
-}
-int main ()
-{
-    char caracter = '.';
-    char string[] = "hola. que tal .estamos";
-    printf ("%s", ft_strrchr(string, caracter));
 }
