@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 11:05:15 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/12 11:05:24 by dpuente-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
+
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	unsigned int	count;
@@ -15,14 +28,4 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	}
 	dest[i] = '\0';
 	return (count);
-}
-int main(void)
-{
-	char src[10]	= "ab121";
-	char dest[10]	= "12123123";
-
-	size_t 			nb = 8;
-	unsigned int 	nb2 = 8;
-	printf("Str: %u", ft_strlcpy(dest, src, nb2));
-	return (0);
 }

@@ -1,21 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 11:09:31 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/12 11:09:32 by dpuente-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
-
-int ft_toupper(int ch)
+int	ft_toupper(int ch)
 {
 	int n;
 
 	n = 0;
-	if ((ch > 96)&&(ch < 173))
+	if ((ch > 96) && (ch < 173))
 	{
-		return(ch-32);
+		return (ch - 32);
 	}
 	else
 	{
-		return(ch);
+		return (ch);
 	}
-}
-int main()
-{
-	ft_toupper('h');
 }

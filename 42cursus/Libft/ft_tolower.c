@@ -1,21 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 11:08:47 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/12 11:08:58 by dpuente-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
-
-int ft_tolower(int ch)
+int	ft_tolower(int ch)
 {
 	int n;
 
 	n = 0;
-	if ((ch > 64)&&(ch < 91))
+	if ((ch > 64) && (ch < 91))
 	{
-		return(ch+32);
+		return (ch + 32);
 	}
 	else
 	{
-		return(ch);
+		return (ch);
 	}
-}
-int main()
-{
-	putchar(ft_tolower('H'));
 }

@@ -1,25 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 11:00:26 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/12 16:32:06 by dpuente-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
+
 void	*ft_memcpy(void *dest, const void *src, size_t len)
 {
-	char	*ptr;
-    const char    *rtp;
+	char		*ptr;
+	const char	*rtp;
+
 	ptr = dest;
-    rtp = src;
+	rtp = src;
 	while (dest++ != '\0')
 	{
 		*ptr = *rtp;
 		ptr++;
-        rtp++;
+		rtp++;
 	}
-	return(dest);
-}
-int main ()
-{
-	const char pepe[50] = {"Muy bien y tuu ?"};
-	char hola[50] = {"hola que tal ???"} ;
-	
-	ft_memcpy(hola, pepe, sizeof(char)*3);
-	printf("%d, %d, %d",hola[0], hola[1], hola[2]);
-	
+	return (dest);
 }
