@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:48:31 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/12 10:48:57 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/15 12:49:15 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	int				i;
 
 	i = 0;
+	ptr = s;
 	c2 = (unsigned char)c;
 	while (n--)
 	{
