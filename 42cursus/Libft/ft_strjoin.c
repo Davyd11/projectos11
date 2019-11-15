@@ -3,24 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 12:49:29 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/13 14:59:30 by davyd11          ###   ########.fr       */
+/*   Updated: 2019/11/15 11:32:06 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdio.h>
-# include <stdlib.h>
-# include "ft_strlen.c"
+#include <stdio.h>
+#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int n;
-	int p;
-	int size;
-	char *join;
-
+	int		n;
+	int		p;
+	int		size;
+	char	*join;
 
 	p = 0;
 	n = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 12:17:49 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/13 12:22:14 by davyd11          ###   ########.fr       */
+/*   Updated: 2019/11/15 11:30:30 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *src;
-	int i;
-	int n;
+	char	*src;
+	int		i;
+	int		n;
 
 	n = 0;
 	while (s[n] != '\0')
