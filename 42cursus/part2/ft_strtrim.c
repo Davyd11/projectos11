@@ -6,7 +6,7 @@
 /*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:23:19 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/18 19:23:43 by davyd11          ###   ########.fr       */
+/*   Updated: 2019/11/18 19:31:59 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	strtrim = (unsigned char *) s1;
 	strefer = (unsigned char *) set;
-	finaltext = malloc(ft_strlen(strtrim)12 + 1);
+	finaltext = malloc(ft_strlen(strtrim) + 1);
 	function(strtrim, strefer, finaltext);
 	return (finaltext);
 }
