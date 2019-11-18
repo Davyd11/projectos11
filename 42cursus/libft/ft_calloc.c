@@ -6,7 +6,7 @@
 /*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:41:11 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/15 15:09:22 by davyd11          ###   ########.fr       */
+/*   Updated: 2019/11/18 10:34:22 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	i = 0;
 	if (nmemb == 0 || size == 0)
 		return (NULL);
-	result = malloc(ft_strlen(size) * ft_strlen(nmemb));
+	result = malloc(size * nmemb);
 	while (i <= nmemb)
 	{
 		((char*)result)[i] = 0;

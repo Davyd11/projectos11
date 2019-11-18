@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 11:28:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/15 11:29:40 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/18 10:32:00 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 char	*ft_strdup(char *src)
 {
