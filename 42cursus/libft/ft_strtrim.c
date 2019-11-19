@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:23:19 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/19 10:27:57 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/19 12:13:40 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include <stdlib.h>
 #include "libft.h"
 
-void	function(unsigned char *strtrim, unsigned char *strefer
-, unsigned char *finaltext)
+void	function(char *strtrim, char *strefer
+, char *finaltext)
 {
 	int j;
 	int n;
@@ -41,12 +41,12 @@ void	function(unsigned char *strtrim, unsigned char *strefer
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	unsigned char *strtrim;
-	unsigned char *strefer;
-	unsigned char *finaltext;
+	char *strtrim;
+	char *strefer;
+	char *finaltext;
 
-	strtrim = (unsigned char *)s1;
-	strefer = (unsigned char *)set;
+	strtrim = (char *)s1;
+	strefer = (char *)set;
 	finaltext = malloc(ft_strlen(strtrim) + 1);
 	function(strtrim, strefer, finaltext);
 	return (finaltext);

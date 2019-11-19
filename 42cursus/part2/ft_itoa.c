@@ -1,32 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 11:05:15 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/19 13:10:39 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/11/19 15:40:51 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/19 17:17:30 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "libft.h"
+#include <stdlib.h>
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int		sumcount(int num)
 {
-	unsigned int	count;
-	unsigned int	i;
+	int count;
 
 	count = 0;
-	while (src[count] != '\0')
-		++count;
-	i = 0;
-	while (src[i] != '\0' && i < (size - 1))
+	while (num != 0)
 	{
-		dest[i] = src[i];
-		++i;
+		count++;
+		num /= 10;
 	}
-	dest[i] = '\0';
 	return (count);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	char	*numbers;
+	int		num;
+	int		resto;
+	int		p;
+
+	p = 0;
+	resto = 10;
+	numbers = "012345789";
+	num = sumcount(n);
+	str = (char *)malloc(num);
+	while (p <= num)
+	{
+		str[num] = (p % resto);
+		resto *= 10;
+		p++;
+	}
+	return (str);
+}
+
+int		main(void)
+{
+	printf("%s", ft_itoa(123));
 }

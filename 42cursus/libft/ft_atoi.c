@@ -6,11 +6,19 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:10:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/12 16:30:52 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/19 15:35:30 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "libft.h"
+
+int	result(int cont, int res)
+{
+	if (cont % 2 != 0)
+		res = res * -1;
+	return (res);
+}
 
 int	ft_atoi(char *str)
 {
@@ -36,7 +44,5 @@ int	ft_atoi(char *str)
 		res += str[x] - '0';
 		x++;
 	}
-	if (cont % 2 != 0)
-		res = res * -1;
-	return (res);
+	return (result(cont, res));
 }
