@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 12:49:29 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/15 11:32:06 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/20 16:46:49 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	p = 0;
 	n = 0;
-	if (!(size = ft_strlen(s1) + ft_strlen(s2)))
-		return (0);
-	join = (char*)malloc(size + 1);
+	if (!s1)
+		return (NULL);
+	size = ft_strlen(s1) + ft_strlen(s2);
+	if (!(join = (char*)malloc(sizeof(char) * (size + 1))))
+		return (NULL);
 	while (s1[n] != '\0')
 	{
 		join[n] = s1[n];

@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:45:08 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/19 11:45:22 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/20 15:09:03 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,9 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 int				ft_tolower(int ch);
 int				ft_toupper(int ch);
 char			*ft_strtrim(char const *s1, char const *set);
+int				ft_atoi(char *str);
+char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void			ft_putnbr_fd(int nb, int fd);
+void			ft_putchar_fd(char c, int fd);
 
 #endif
