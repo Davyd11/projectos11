@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 10:41:11 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/21 13:43:33 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/09/11 14:31:52 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/21 14:06:37 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putstr_fd(char *str, int fd)
 {
-	void	*result;
-	size_t	i;
+	int n;
 
-	i = 0;
-	if (!nmemb || !size)
-		return (NULL);
-	if (!(result = malloc(size * nmemb)))
-		return (NULL);
-	while (i <= nmemb)
+	n = 0;
+	while (str[n] != '\0')
 	{
-		((char*)result)[i] = 0;
-		i++;
+		write(fd, &(str[n]), 1);
+		n++;
 	}
-	return (result);
 }
