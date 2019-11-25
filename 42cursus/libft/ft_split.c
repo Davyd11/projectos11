@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 12:14:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/25 16:50:27 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/25 17:18:12 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ char	isertwords(char const *s, char c, int n, char **finaltext)
 	{
 		if ((s[n] == c) && (s[n + 1] != c && s[n + 1] != '\0'))
 		{
-			finaltext[count] = malloc((nletters(s, c, n) + 1));
+			finaltext[count] = malloc(sizeof(char) * (nletters(s, c, n) + 1));
 		}
 		else if (s[n] != c && n == 0)
-			finaltext[count] = malloc((nletters(s, c, n) + 1));
+			finaltext[count] = malloc(sizeof(char) * (nletters(s, c, n) + 1));
 		n++;
 	}
 }
@@ -60,7 +60,7 @@ void	nwords(char const *s, char c)
 			count++;
 		n++;
 	}
-	finaltext = malloc(count);
+	finaltext = malloc(sizeof(char*) * (count));
 	isertwords(s, c, n, finaltext);
 }
 
