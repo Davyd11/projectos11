@@ -1,51 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/25 12:14:52 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/25 16:50:27 by dpuente-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-char	countindi(char const *s, char c, int n) //cuenta el numero de palabras qye hay que cada corte
+int		nletters(char const *s, char c, int n)
 {
-	int count;
+	int letters;
 
-	count = 0;
-	n++;
+	letters = 0;
 	while (s[n] != c)
-	{
-		count++;
-	}
-	return (count);
+		letters++;
+	return (letters);
 }
 
-char	nwords(char const *s, char c)
+char	isertwords(char const *s, char c, int n, char **finaltext)
 {
-	int n;
 	int count;
-	char **finaltext;
 
 	count = 0;
 	n = 0;
 	while (s[n] != '\0')
 	{
-		if ((s[n] == c) && (s[n + 1] != c))// crea la cuenta de cuantos cortes habra que hacer al string
+		if ((s[n] == c) && (s[n + 1] != c && s[n + 1] != '\0'))
 		{
-			countindi(s, c, n);// mal, relocalizar 
+			finaltext[count] = malloc((nletters(s, c, n) + 1));
+		}
+		else if (s[n] != c && n == 0)
+			finaltext[count] = malloc((nletters(s, c, n) + 1));
+		n++;
+	}
+}
+
+void	nwords(char const *s, char c)
+{
+	int		n;
+	int		count;
+	char	**finaltext;
+
+	count = 0;
+	n = 0;
+	while (s[n] != '\0')
+	{
+		if ((s[n] == c) && (s[n + 1] != c && s[n + 1] != '\0'))
+		{
 			count++;
 		}
+		else if (s[n] != c && n == 0)
+			count++;
 		n++;
 	}
 	finaltext = malloc(count);
-	return (finaltext);
+	isertwords(s, c, n, finaltext);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char	**textreturn;
-
-	textreturn = nwords(s, c);
-
-	return (textreturn);
+	nwords(s, c);
 }
 
-int main(void)
+int		main(void)
 {
-	printf(ft_split("  hola que tal estamos,  por  aqui  ", " "));
+	printf("%s", ft_split("  hola que tal estamos,  por  aqui  ", ' '));
 }
