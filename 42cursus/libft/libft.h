@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:45:08 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/21 11:58:36 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:19:58 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ int				ft_atoi(char *str);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_putnbr_fd(int nb, int fd);
 void			ft_putchar_fd(char c, int fd);
+void			ft_putstr_fd(char *str, int fd);
+char			**ft_split(char const *s, char c);
+void			ft_putendl_fd(char *s, int fd);
 
 #endif
