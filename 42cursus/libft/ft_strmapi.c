@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 11:18:01 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/20 11:19:50 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/27 21:00:48 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,22 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*fstr;
-	unsigned int	i;
-	int				j;
+	size_t	len;
+	char	*str;
+	int		i;
 
-	if (s && f)
+	if (!s)
+		return (NULL);
+	len = ft_strlen(s);
+	str = malloc((len + 1) * sizeof(char));
+	i = 0;
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
+	while (s[i] != '\0')
 	{
-		i = 0;
-		j = ft_strlen((char *)s);
-		fstr = (char *)malloc(j * sizeof(fstr));
-		while (s[i] != 0)
-		{
-			fstr[i] = f(i, s[i]);
-			i++;
-		}
-		return (fstr);
+		str[i] = (*f)(i, s[i]);
+		i++;
 	}
-	return (NULL);
+	return (str);
 }
