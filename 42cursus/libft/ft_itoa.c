@@ -6,46 +6,36 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 15:40:51 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/20 10:58:47 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/27 20:28:12 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int		sumcount(int num)
+char		*ft_itoa(int nbr)
 {
-	int count;
-
-	count = 0;
-	while (num != 0)
-	{
-		count++;
-		num /= 10;
-	}
-	return (count);
-}
-
-char	*ft_itoa(int n)
-{
+	long	n;
+	size_t	len;
 	char	*str;
-	char	*numbers;
-	int		num;
-	int		resto;
-	int		p;
 
-	p = 0;
-	resto = 10;
-	numbers = "012345789";
-	num = sumcount(n);
-	str = (char *)malloc(num + 1);
-	str[num] = '\0';
-	num--;
+	n = nbr;
+	len = (n > 0) ? 0 : 1;
+	n = (n > 0) ? n : -n;
+	while (nbr)
+		nbr = len++ ? nbr / 10 : nbr / 10;
+	str = (char *)malloc(sizeof(str) * len + 1);
+	if (!str)
+		return (NULL);
+	*(str + len--) = '\0';
 	while (n > 0)
 	{
-		str[num] = 48 + (n % 10);
-		n = n / 10;
-		num--;
+		*(str + len--) = n % 10 + '0';
+		n /= 10;
 	}
+	if (len == 0 && str[1] == '\0')
+		*(str + len) = '0';
+	if (len == 0 && str[1] != '\0')
+		*(str + len) = '-';
 	return (str);
 }

@@ -6,12 +6,13 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 12:14:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/26 17:31:06 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/27 19:15:39 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+#include "libft.h"
 
 static void	introduce(char const *s, char c, int count, char **finaltext, int n)
 {
@@ -54,13 +55,13 @@ static char	**isertwords(char const *s, char c, int n, char **finaltext)
 	{
 		if ((s[n] == c) && (s[n + 1] != c && s[n + 1] != '\0'))
 		{
-			finaltext[count] = malloc(sizeof(char) * (nletters(s, c, n) + 1));
+			finaltext[count] = calloc(sizeof(char), (nletters(s, c, n) + 1));
 			introduce(s, c, count, finaltext, n);
 			count++;
 		}
 		else if (s[n] != c && n == 0)
 		{
-			finaltext[count] = malloc(sizeof(char) * (nletters(s, c, n) + 1));
+			finaltext[count] = calloc(sizeof(char), (nletters(s, c, n) + 1));
 			introduce(s, c, count, finaltext, n);
 			count++;
 		}
@@ -93,6 +94,6 @@ char	**ft_split(char const *s, char c)
 	}
 	if (content <= 0)
 		return (NULL);
-	finaltext = malloc(sizeof(char*) * (count));
+	finaltext = calloc(sizeof(char*), (count));
 	return (isertwords(s, c, n, finaltext));
 }

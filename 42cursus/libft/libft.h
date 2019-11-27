@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:45:08 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/26 17:19:58 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/27 19:32:34 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void			*ft_memset(void *b, int c, size_t len);
 char			*ft_strchr(const char *str, int c);
 char			*ft_strdup(char *src);
 char			*ft_strjoin(char const *s1, char const *s2);
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
+size_t			ft_strlcat(char *dest, char *src, size_t size);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 int				ft_strlen(const char *str);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
