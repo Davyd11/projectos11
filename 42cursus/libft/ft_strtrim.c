@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:23:19 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/28 12:43:51 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/29 12:35:30 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	*introduce(int start, int end, char *finaltext, char *strtrim)
 		finaltext[start] = strtrim[start];
 		start++;
 	}
+	finaltext[start] = '\0';
 	return (finaltext);
 }
 
@@ -36,7 +37,7 @@ char	*function(char *strtrim, char *strefer
 	start = 0;
 	n = 0;
 	p = 0;
-	while (strefer[n] != '\0')
+	while (strefer[n++] != '\0')
 	{
 		while (p < trelong)
 		{
@@ -49,7 +50,7 @@ char	*function(char *strtrim, char *strefer
 			if (strtrim[p--] == strefer[n])
 				end--;
 		}
-		n++;
+		introduce(start, end, finaltext, strtrim);
 	}
 	return (introduce(start, end, finaltext, strtrim));
 }
