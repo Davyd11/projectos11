@@ -6,20 +6,21 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:45:08 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/29 12:34:30 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:22:50 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 # define BUFF_SIZE 4096
 
-typedef	struct	s_list
+typedef struct s_list
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
+void 				*content;
+struct s_list		*next;
 }				t_list;
 
 int				ft_atoi(char *str);
@@ -56,5 +57,6 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *str, int fd);
 char			**ft_split(char const *s, char c);
 void			ft_putendl_fd(char *s, int fd);
+t_list			*ft_lstnew(void *content);
 
 #endif
