@@ -6,94 +6,75 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 12:14:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/27 19:15:39 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/02 16:48:40 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "libft.h"
 
-static void	introduce(char const *s, char c, int count, char **finaltext, int n)
+static int		ft_countwords(const char *s, char c)
 {
-	int letter;
+	int	i;
 
-	letter = 0;
-	if (s[n] == c)
-		n++;
-	while (s[n] != c)
+	i = 0;
+	while (*s)
 	{
-		finaltext[count][letter] = s[n];
-		letter++;
-		n++;
+		while (*s && *s == c)
+			s++;
+		if (*s && *s != c)
+		{
+			i++;
+			while (*s && *s != c)
+				s++;
+		}
 	}
-	finaltext[count][letter] = '\0';
+	return (i);
 }
 
-static int		nletters(char const *s, char c, int n)
+static char		*ft_word(const char *s, char c)
 {
-	int letters;
+	char	*word;
+	int		i;
 
-	letters = 0;
-	if (s[n] == c)
-		n++;
-	while (s[n + 1] != c)
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	word = (char *)malloc(sizeof(char) * (i + 1));
+	i = 0;
+	while (s[i] && s[i] != c)
 	{
-		letters++;
-		n++;
+		word[i] = s[i];
+		i++;
 	}
-	return (letters);
+	word[i] = '\0';
+	return (word);
 }
 
-static char	**isertwords(char const *s, char c, int n, char **finaltext)
+char			**ft_split(const char *s, char c)
 {
-	int count;
+	char	**a;
+	int		i;
 
-	count = 0;
-	n = 0;
-	while (s[n] != '\0')
-	{
-		if ((s[n] == c) && (s[n + 1] != c && s[n + 1] != '\0'))
-		{
-			finaltext[count] = calloc(sizeof(char), (nletters(s, c, n) + 1));
-			introduce(s, c, count, finaltext, n);
-			count++;
-		}
-		else if (s[n] != c && n == 0)
-		{
-			finaltext[count] = calloc(sizeof(char), (nletters(s, c, n) + 1));
-			introduce(s, c, count, finaltext, n);
-			count++;
-		}
-		n++;
-	}
-	return (finaltext);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	int		n;
-	int		count;
-	char	**finaltext;
-	int		content;
-
-	content = 0;
-	count = 0;
-	n = 0;
-	while (s[n] != '\0')
-	{
-		if ((s[n] == c) && (s[n + 1] != c && s[n + 1] != '\0'))
-		{
-			count++;
-		}
-		else if (s[n] != c && n == 0)
-			count++;
-		else if (s[n] != c)
-			content++;
-		n++;
-	}
-	if (content <= 0)
+	if (s == '\0')
 		return (NULL);
-	finaltext = calloc(sizeof(char*), (count));
-	return (isertwords(s, c, n, finaltext));
+	if (!(a = (char **)malloc(sizeof(char *) * (ft_countwords(s, c) + 1))))
+	{
+		return (NULL);
+		free(*a);
+	}
+	i = 0;
+	while (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		if (*s && *s != c)
+		{
+			a[i] = ft_word(s, c);
+			i++;
+			while (*s && *s != c)
+				s++;
+		}
+	}
+	a[i] = NULL;
+	return (a);
 }

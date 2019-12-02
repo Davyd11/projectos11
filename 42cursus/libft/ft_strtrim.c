@@ -5,13 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 15:23:19 by davyd11           #+#    #+#             */
-/*   Updated: 2019/11/29 12:35:30 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/11/12 10:41:11 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/12/02 17:15:05 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
 char	*introduce(int start, int end, char *finaltext, char *strtrim)
@@ -39,18 +37,19 @@ char	*function(char *strtrim, char *strefer
 	p = 0;
 	while (strefer[n++] != '\0')
 	{
-		while (p < trelong)
+		while (p++ < trelong)
 		{
-			if (strtrim[p++] == strefer[n])
+			if (strtrim[p] == strefer[n])
 				start++;
 		}
 		p = ft_strlen(strtrim);
-		while (p > (p - trelong))
+		while (p-- > (p - trelong))
 		{
-			if (strtrim[p--] == strefer[n])
+			if (strtrim[p] == strefer[n])
 				end--;
 		}
-		introduce(start, end, finaltext, strtrim);
+		introduce(start, end, finaltext = malloc(
+			(ft_strlen(strtrim) + 1) - start - end), strtrim);
 	}
 	return (introduce(start, end, finaltext, strtrim));
 }
@@ -64,7 +63,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	strtrim = (char *)s1;
 	strefer = (char *)set;
-	finaltext = malloc(ft_strlen(strtrim) + 1);
 	trelong = ft_strlen(strefer);
 	return (function(strtrim, strefer, finaltext, trelong));
 }
