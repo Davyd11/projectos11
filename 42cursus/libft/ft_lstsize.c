@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:35:11 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/12/02 12:35:34 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/04 12:58:17 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ int	ft_lstsize(t_list *lst)
 
 	count = 0;
 	temp = lst;
-	while (temp->next != NULL)
+	while (temp != NULL)
 	{
 		count++;
 		temp = temp->next;
 	}
-	if (temp->next == NULL)
-		count++;
 	return (count);
 }
