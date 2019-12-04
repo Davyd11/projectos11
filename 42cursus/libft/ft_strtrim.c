@@ -3,73 +3,87 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:41:11 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/12/03 13:33:05 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/04 10:10:37 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*introduce(int start, int end, char *strtrim)
+int     beginning(char const *s1, char const *set)
 {
-	int		newcount;
-	char	*finaltext;
+    int i;
+    int j;
+    int cont1;
+    int setnb;
 
-	finaltext = malloc((((strlen(strtrim) + 1) - start) -
-	(strlen(strtrim) - end)));
-	newcount = 0;
-	while (start < end)
-	{
-		finaltext[newcount] = strtrim[start];
-		newcount++;
-		start++;
-	}
-	finaltext[newcount] = '\0';
-	return (finaltext);
+    setnb = 1;
+    i = 0;
+    j = 0;
+    cont1 = 0;
+    while (s1[i] != '\0' && setnb == 1)
+    {
+        setnb = 0;
+        while (set[j] != '\0')
+        {
+            if (s1[i] == set[j])
+            {
+                cont1++;
+                setnb = 1;
+            }
+            j++;
+        }
+        j = 0;
+        i++;
+    }
+    return (cont1);
 }
 
-char	*function(char *strtrim, char *strefer
-, unsigned long trelong, int end)
+int     final(char const *s1, char const *set)
 {
-	int				n;
-	unsigned long	p;
-	int				start;
+    int i;
+    int j;
+    int cont2;
+    int setnb;
 
-	start = 0;
-	n = 0;
-	while (strefer[n] != '\0')
-	{
-		p = 0;
-		while (p < trelong)
-		{
-			if (strtrim[p] == strefer[n])
-				start++;
-			p++;
-		}
-		p = strlen(strtrim);
-		while (p >= (strlen(strtrim) - trelong))
-		{
-			if (strtrim[p] == strefer[n])
-				end--;
-			p--;
-		}
-		n++;
-	}
-	return (introduce(start, end, strtrim));
+    setnb = 1;
+    i = ft_strlen(s1) - 1;
+    j = ft_strlen(set) - 1;
+    cont2 = 0;
+    while (i >= 0 && setnb == 1)
+    {
+        setnb = 0;
+        while (j >= 0)
+        {
+            if (s1[i] == set[j])
+            {
+                cont2++;
+                setnb = 1;
+            }
+            j--;
+        }
+        j = ft_strlen(set) - 1;
+        i--;
+    }
+    return (cont2);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char    *ft_strtrim(char const *s1, char const *set)
 {
-	char				*strtrim;
-	char				*strefer;
-	unsigned long		trelong;
-	int					end;
+    size_t  slen;
+    size_t  start;
+    size_t  i;//mas que fudre
 
-	strtrim = (char *)s1;
-	strefer = (char *)set;
-	end = strlen(strtrim);
-	trelong = strlen(strefer);
-	return (function(strtrim, strefer, trelong, end));
+    i = 0;
+    start = 0;
+    if (!s1)
+        return (NULL);
+    start = beginning(s1, set)
+    ;
+    if (start > (ft_strlen(s1) - final(s1, set)))
+        return (ft_strdup(""));
+    slen = ft_strlen(s1) - final(s1, set) - beginning(s1, set);
+    return (ft_substr(s1, start, slen));
 }
