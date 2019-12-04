@@ -6,13 +6,12 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:45:08 by davyd11           #+#    #+#             */
-/*   Updated: 2019/12/03 12:16:56 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/04 19:55:48 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
 # define BUFF_SIZE 4096
@@ -20,7 +19,6 @@
 typedef struct	s_list
 {
 	void				*content;
-	size_t				content_size;
 	struct s_list		*next;
 }				t_list;
 
@@ -61,11 +59,12 @@ void			ft_putendl_fd(char *s, int fd);
 t_list			*ft_lstnew(void *content);
 int				ft_lstsize(t_list *lst);
 void			ft_lstadd_front(t_list **lst, t_list *new);
-void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void			ft_lstdelone(t_list *lst, void (*del)(void*));
 t_list			*ft_lstlast(t_list *lst);
 void			ft_lstadd_back(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-void			ft_lstclear(t_list **begin_list);
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void			ft_lstclear(t_list **lst, void (*del)(void*));
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
+void (*del)(void *));
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:31:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/21 14:06:37 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/04 19:59:20 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	ft_putstr_fd(char *str, int fd)
 	int n;
 
 	n = 0;
-	while (str[n] != '\0')
+	if (str)
 	{
-		write(fd, &(str[n]), 1);
-		n++;
+		while (str[n] != '\0')
+		{
+			write(fd, &(str[n]), 1);
+			n++;
+		}
 	}
 }

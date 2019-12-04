@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 12:02:08 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/12/04 16:54:30 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/04 20:02:18 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list *tmp;
 
 	tmp = *lst;
-	if (lst)
+	if (!lst)
+		return ;
+	while (tmp)
 	{
-		del((*lst)->content);
-		while (lst != NULL)
-		{
-			tmp = tmp->next;
-			free(tmp);
-		}
+		del(tmp->content);
+		free(tmp);
+		tmp = tmp->next;
 	}
+	*lst = NULL;
 }
