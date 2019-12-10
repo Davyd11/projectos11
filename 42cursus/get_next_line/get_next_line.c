@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 11:48:21 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/12/05 12:40:48 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/10 12:21:52 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int get_next_line(int fd, char **line)
 {
-	while ()
+	int count;
+
+	count = 0;
+	while (count )
 	{
 		
 	}

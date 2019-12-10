@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:45:08 by davyd11           #+#    #+#             */
-/*   Updated: 2019/12/04 19:55:48 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/10 13:37:13 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct	s_list
 	struct s_list		*next;
 }				t_list;
 
-int				ft_atoi(char *str);
+int				ft_atoi(const char *str);
 void			*ft_bzero(void *b, size_t len);
 void			*ft_calloc(size_t nmemb, size_t size);
 int				ft_isalnum(int c);
