@@ -6,14 +6,14 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 11:05:15 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/21 11:55:32 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/12 15:17:58 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	unsigned int	count;
 	unsigned int	i;

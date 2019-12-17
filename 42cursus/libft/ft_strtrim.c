@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:41:11 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/12/04 12:07:35 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/12 15:54:46 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		final(char const *s1, char const *set)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	slen;
-	int		start;
+	size_t	start;
 	size_t	i;
 
 	i = 0;

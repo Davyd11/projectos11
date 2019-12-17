@@ -6,14 +6,14 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:10:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/22 17:58:18 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/10 13:37:34 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int res;
 	int sign;
