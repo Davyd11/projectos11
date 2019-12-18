@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 11:48:21 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/12/18 15:41:49 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/18 16:24:42 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,26 @@ static int	appendline(char **s, char **line)
 
 static int	output(char **s, char **line, int ret, int fd)
 {
-	if (ret < 0)
+	if (ret < 0)									// if the value isn´t coherent will return -1 (error inn the file)
 		return (-1);
-	else if (ret == 0 && s[fd] == NULL)
+	else if (ret == 0 && s[fd] == NULL)				// will return a 0 if the function reached the EOF
 		return (0);
 	else
-		return (appendline(&s[fd], line));
+		return (appendline(&s[fd], line));			//
 }
 
 int			get_next_line(const int fd, char **line)
 {
 	int			ret;								// intiger to asigned into the read function
 	static char	*s[FD_SIZE];						// *****************
-	char		buff[BUFF_SIZE + 1];				// ***************** I supose is used for knowing the maximun characters in the file 
+	char		buff[BUFF_SIZE + 1];				// ***************** I supose is used for knowing the maximun characters(legth) in the file 
 	char		*tmp;								// 
 
 	if (fd < 0 || line == NULL)						// in case of a wrong file desciptor o a null value in the file the function will return -1
 		return (-1);
 	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)	// while the file we are reading isnt´t empty 
 	{
-		buff[ret] = '\0';							// will asign a null value to the end of the file, so the end will be detected
+		buff[ret] = '\0';							// will assign a null value to the end of the file, so the end will be detected
 		if (s[fd] == NULL)							// 
 			s[fd] = ft_strdup(buff);				//
 		else
