@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 11:48:21 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/12/18 16:24:42 by dpuente-         ###   ########.fr       */
+/*   Updated: 2019/12/20 11:35:25 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,64 +15,61 @@
 
 static int	appendline(char **s, char **line)
 {
-	int		len;
-	char	*tmp;
+	int		len;									// count moving through pointer 
+	char	*tmp;									// 
 
 	len = 0;
-	while ((*s)[len] != '\n' && (*s)[len] != '\0')
+	while ((*s)[len] != '\n' && (*s)[len] != '\0') 	// will move until its EOF or next line  
 		len++;
-	if ((*s)[len] == '\n')
+	if ((*s)[len] == '\n')							// Only whene new line 
 	{
-		*line = ft_strsub(*s, 0, len);
+		*line = ft_strsub(*s, 0, len);				// position of storage pointer equal to ***********
 		tmp = ft_strdup(&((*s)[len + 1]));
 		free(*s);
 		*s = tmp;
-		if ((*s)[0] == '\0')
+		if ((*s)[0] == '\0')						// if the first char is the EOF will resturn 
 			ft_strdel(s);
 	}
-	else
+	else											//*****NOT SURE***** in case the character is a \0 will return ******
 	{
 		*line = ft_strdup(*s);
 		ft_strdel(s);
 	}
-	return (1);
+	return (1);										// return 1 couse the character isn't \0 or \n
 }
 
 static int	output(char **s, char **line, int ret, int fd)
 {
-	if (ret < 0)									// if the value isn´t coherent will return -1 (error inn the file)
+	if (ret < 0)									// if the value isn´t coherent will return -1 (error in the file)
 		return (-1);
 	else if (ret == 0 && s[fd] == NULL)				// will return a 0 if the function reached the EOF
 		return (0);
 	else
-		return (appendline(&s[fd], line));			//
+		return (appendline(&s[fd], line));			// whene the value is valid for interpretation call appendline so line gets stored
 }
 
 int			get_next_line(const int fd, char **line)
 {
 	int			ret;								// intiger to asigned into the read function
-	static char	*s[FD_SIZE];						// *****************
-	char		buff[BUFF_SIZE + 1];				// ***************** I supose is used for knowing the maximun characters(legth) in the file 
-	char		*tmp;								// 
+	static char	*s[FD_SIZE];						// Pointer to the buffer only for the BONUS part
+	char		buff[BUFF_SIZE + 1];				// Pointer to the buffer that will be changes in compilation 
+	char		*tmp;								// character pointer for storage of the file characters(ft_strjoin)
 
 	if (fd < 0 || line == NULL)						// in case of a wrong file desciptor o a null value in the file the function will return -1
 		return (-1);
 	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)	// while the file we are reading isnt´t empty 
 	{
 		buff[ret] = '\0';							// will assign a null value to the end of the file, so the end will be detected
-		if (s[fd] == NULL)							// 
-			s[fd] = ft_strdup(buff);				//
+		if (s[fd] == NULL)							// ****************** BONUS ********************
+			s[fd] = ft_strdup(buff);				// Equal to ***************
 		else
 		{
-			tmp = ft_strjoin(s[fd], buff);			//
-			free(s[fd]);							// 
-			s[fd] = tmp;							//
+			tmp = ft_strjoin(s[fd], buff);			// 
+			free(s[fd]);							// ******free for space uneeded or hole space ********
+			s[fd] = tmp;							// 
 		}
-		if (ft_strchr(s[fd], '\n'))					//
+		if (ft_strchr(s[fd], '\n'))					//********WHY?********* why does it break at the begginig
 			break ;
 	}
-	return (output(s, line, ret, fd));				//
+	return (output(s, line, ret, fd));				// FUNCTION OUTPUT (just 1,0,-1)
 }
-
-// se pude usar calloc con el free para el almacenamiento de los resultados
-// la otra opcione es usar listas encadenadas par hcaer uns gestion de la memoria dinamica
