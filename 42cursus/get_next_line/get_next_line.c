@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 11:48:21 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/12/20 11:35:25 by davyd11          ###   ########.fr       */
+/*   Updated: 2020/01/09 11:26:19 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,24 @@ int			get_next_line(const int fd, char **line)
 			s[fd] = ft_strdup(buff);				// Equal to ***************
 		else
 		{
-			tmp = ft_strjoin(s[fd], buff);			// 
-			free(s[fd]);							// ******free for space uneeded or hole space ********
-			s[fd] = tmp;							// 
+			tmp = ft_strjoin(s[fd], buff);			// ss
+			free(s[fd]);							// Release the whole space from s[]
+			s[fd] = tmp;							// reasign the space to tmp
 		}
-		if (ft_strchr(s[fd], '\n'))					//********WHY?********* why does it break at the begginig
+		if (ft_strchr(s[fd], '\n'))					// Will check all digits until end of buffer or \n
 			break ;
 	}
 	return (output(s, line, ret, fd));				// FUNCTION OUTPUT (just 1,0,-1)
+}
+
+
+int main (int p, char **text)
+{	int fd;
+	char *line;
+
+	p = 0;
+	p++;
+	
+	fd = open(text, O_RDONLY);
+	get_next_line(fd, &line);
 }
