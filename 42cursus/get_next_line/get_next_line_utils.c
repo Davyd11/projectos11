@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:40:13 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/12/20 11:41:29 by davyd11          ###   ########.fr       */
+/*   Updated: 2020/01/08 12:41:45 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int	ft_strlen(const char *str)
+{
+	int num;
+
+	num = 0;
+	while (str[num] != '\0')
+	{
+		num++;
+	}
+	return (num);
+}
 
 char	*ft_strdup(const char *src)
 {
@@ -71,12 +83,53 @@ char	*ft_strchr(const char *str, int c)
 	return ((char*)str);
 }
 
+char	*ft_strnew(size_t size)
+{
+	char	*str;
+	size_t	i;
 
+	i = 0;
+	str = (char *)malloc(sizeof(*str) * size + 1);
+	if (str == NULL)
+		return (NULL);
+	while (i <= size)
+	{
+		str[i] = '\0';
+		i++;
+	}
+	return (str);
+}
 
-/*Append the following functions for usage in the main file get_next_line.c*/
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char	*subs;
+	size_t	i;
 
-/*ft_strsub*/
-/*ft_strdel*/
+	if (s == NULL)
+		return (NULL);
+	subs = ft_strnew(len);
+	if (subs == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		subs[i] = s[start + i];
+		i++;
+	}
+	return (subs);
+}
 
-/* Ask if the files can be used, because the the library it self can't be used in the program !!! */
-/* Check if the functions use prohibited functions */
+void	ft_memdel(void **ap)
+{
+	if (ap != NULL)
+	{
+		free(*ap);
+		*ap = NULL;
+	}
+}
+
+void	ft_strdel(char **as)
+{
+	if (as != NULL && *as != NULL)
+		ft_memdel((void**)as);
+}
