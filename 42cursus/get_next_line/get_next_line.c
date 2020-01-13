@@ -6,7 +6,7 @@
 /*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 11:48:21 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/12/20 11:35:25 by davyd11          ###   ########.fr       */
+/*   Updated: 2019/12/20 13:25:02 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	appendline(char **s, char **line)
 	if ((*s)[len] == '\n')							// Only whene new line 
 	{
 		*line = ft_strsub(*s, 0, len);				// position of storage pointer equal to ***********
-		tmp = ft_strdup(&((*s)[len + 1]));
-		free(*s);
-		*s = tmp;
+		tmp = ft_strdup(&((*s)[len + 1]));			// STRDUP just copy from a pointer to another the number of digits specified
+		free(*s);									// FREE the space from s pointer, to recicle the variable.
+		*s = tmp;									// reusing the variable s to store tmp
 		if ((*s)[0] == '\0')						// if the first char is the EOF will resturn 
 			ft_strdel(s);
 	}
@@ -50,12 +50,12 @@ static int	output(char **s, char **line, int ret, int fd)
 
 int			get_next_line(const int fd, char **line)
 {
-	int			ret;								// intiger to asigned into the read function
+	int			ret;								// intiger to asigned into the read() function and represent the character in the file
 	static char	*s[FD_SIZE];						// Pointer to the buffer only for the BONUS part
-	char		buff[BUFF_SIZE + 1];				// Pointer to the buffer that will be changes in compilation 
+	char		buff[BUFF_SIZE + 1];				// Will limit the characters that will be readed per *******line*******, pointer to the buffer that will be changed in compilation
 	char		*tmp;								// character pointer for storage of the file characters(ft_strjoin)
 
-	if (fd < 0 || line == NULL)						// in case of a wrong file desciptor o a null value in the file the function will return -1
+	if (fd < 0 || line == NULL)						// in case of a wrong file desciptor or a null value in the file the function will return -1
 		return (-1);
 	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)	// while the file we are reading isnt´t empty 
 	{
