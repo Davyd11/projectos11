@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:40:13 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/01/15 10:38:53 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/01/16 17:45:39 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *str) //ccount the numeber of characters in a string
+int	ft_strlen(const char *str)
 {
 	int num;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 10:32:48 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/01/16 10:57:11 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:31:20 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ static int		output(char **a, char **line, int ret, int fd)
 {
 	if (ret < 0)
 		return (-1);
-	else if (ret == 0 && (a[fd] == NULL || a[fd][0] == '\0'))
+	else if (ret == 0 && (a[fd] == NULL || a[fd][0] == '\0')) // =just whene file is empty will return 0 instead of segfoul
 	{
 		*line = ft_strdup("");
 		strdel(&a[fd]);
 		return (0);
 	}
-	else if (ft_strchr(a[fd], '\n'))
+	else if (ft_strchr(a[fd], '\n')) // finds a \n --> identifies what's part of that line and what not
 		return (readline(a, line, fd));
-	else
+	else							// reach the end of the file so deletes everything and return 0
 	{
 		*line = ft_strdup(a[fd]);
 		strdel(&a[fd]);
@@ -51,10 +51,10 @@ static int		output(char **a, char **line, int ret, int fd)
 
 int				get_next_line(int fd, char **line)	//File descriptor and double pointer to store the lines readed
 {
-	char		*tmp;								// 
-	static char	*a[4096];							// 
-	int			ret;								// number of bytes readed
-	char		*buff;								// 
+	char		*tmp;								// memoria dinamica 
+	static char	*a[4096];							// estatica
+	int			ret;								// number of bytes readed not the expeacted
+	char		*buff;								// memoria dinamicas 
 
 	if (fd < 0 || line == NULL || BUFF_SIZE < 1 ||
 		(!(buff = (char *)malloc(sizeof(char) * BUFF_SIZE + 1))))
@@ -74,5 +74,8 @@ int				get_next_line(int fd, char **line)	//File descriptor and double pointer t
 			break ;
 	}
 	free(buff);
-	return (output(a, line, ret, fd));
+	return (output(a, line, ret, fd));				//here a[] is ????????????????? 
 }
+
+// line used for ...?
+//what's a[] used for ?
