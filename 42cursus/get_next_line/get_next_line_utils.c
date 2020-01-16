@@ -6,13 +6,13 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:40:13 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/01/08 12:41:45 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/01/15 10:38:53 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *str)
+int	ft_strlen(const char *str) //ccount the numeber of characters in a string
 {
 	int num;
 
@@ -24,19 +24,19 @@ int	ft_strlen(const char *str)
 	return (num);
 }
 
-char	*ft_strdup(const char *src)
+char	*ft_strdup(const char *src) // Creates a space in memory and stores the string in it
 {
 	char	*new;
 	int		i;
 	int		size;
 
 	size = 0;
-	while (src[size])
+	while (src[size]) //get the size of the string
 		++size;
-	if (!(new = malloc(sizeof(char) * (size + 1))))
+	if (!(new = malloc(sizeof(char) * (size + 1)))) //assigns the size for he storage 
 		return (NULL);
 	i = 0;
-	while (src[i])
+	while (src[i]) //introduce the data into the space assigned
 	{
 		new[i] = src[i];
 		i++;
@@ -44,7 +44,7 @@ char	*ft_strdup(const char *src)
 	new[i] = '\0';
 	return (new);
 }
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2) // joins to strings in one 
 {
 	int		n;
 	int		p;
@@ -72,9 +72,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	join[n] = '\0';
 	return (join);
 }
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *str, int c) // Search for a character and return strign from there
 {
-	while (*str != c)
+	while (*str != c)					// ft_strchr("www.hola.es", ".") --> .hola.es
 	{
 		if (*str == '\0')
 			return (0);
@@ -83,7 +83,7 @@ char	*ft_strchr(const char *str, int c)
 	return ((char*)str);
 }
 
-char	*ft_strnew(size_t size)
+char	*ft_strnew(size_t size) //Creates a space in memory and iniciates it with \0
 {
 	char	*str;
 	size_t	i;
@@ -100,7 +100,7 @@ char	*ft_strnew(size_t size)
 	return (str);
 }
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_strsub(char const *s, unsigned int start, size_t len) // copy a string from start to the length you seleted
 {
 	char	*subs;
 	size_t	i;
@@ -119,7 +119,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	return (subs);
 }
 
-void	ft_memdel(void **ap)
+void	ft_memdel(void **ap) //frees the memory selected
 {
 	if (ap != NULL)
 	{
@@ -128,7 +128,7 @@ void	ft_memdel(void **ap)
 	}
 }
 
-void	ft_strdel(char **as)
+void	ft_strdel(char **as) //eliminates characters from a string *****the original function ask for the number of character to erase from start and end *************
 {
 	if (as != NULL && *as != NULL)
 		ft_memdel((void**)as);
