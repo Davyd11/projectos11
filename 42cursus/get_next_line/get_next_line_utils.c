@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:40:13 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/01/15 10:38:53 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/01/17 17:03:58 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_strlen(const char *str) //ccount the numeber of characters in a string
 	}
 	return (num);
 }
-
 char	*ft_strdup(const char *src) // Creates a space in memory and stores the string in it
 {
 	char	*new;
@@ -43,6 +42,34 @@ char	*ft_strdup(const char *src) // Creates a space in memory and stores the str
 	}
 	new[i] = '\0';
 	return (new);
+}
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*src;
+	int		i;
+	size_t	n;
+
+	n = 0;
+	if (!s)
+		return (NULL);
+	while (s[n] != '\0')
+		n++;
+	if (start > n)
+		return (ft_strdup(""));
+	if (len >= n)
+		len = n;
+	if (!(src = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
+	len = start + len;
+	while (start < len)
+	{
+		src[i] = s[start];
+		i++;
+		start++;
+	}
+	src[i] = '\0';
+	return (src);
 }
 char	*ft_strjoin(char const *s1, char const *s2) // joins to strings in one 
 {
@@ -98,25 +125,6 @@ char	*ft_strnew(size_t size) //Creates a space in memory and iniciates it with \
 		i++;
 	}
 	return (str);
-}
-
-char	*ft_strsub(char const *s, unsigned int start, size_t len) // copy a string from start to the length you seleted
-{
-	char	*subs;
-	size_t	i;
-
-	if (s == NULL)
-		return (NULL);
-	subs = ft_strnew(len);
-	if (subs == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		subs[i] = s[start + i];
-		i++;
-	}
-	return (subs);
 }
 
 void	ft_memdel(void **ap) //frees the memory selected
