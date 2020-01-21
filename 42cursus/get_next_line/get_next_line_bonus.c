@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 10:32:48 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/01/21 13:50:42 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/01/21 14:00:09 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void			ft_strdel(char **as)
-{
-	if (as != NULL && *as != NULL)
-		if (as != NULL)
-		{
-			free(*as);
-			*as = NULL;
-		}
-}
 
 char			*ft_strnew(size_t size)
 {
@@ -37,6 +27,16 @@ char			*ft_strnew(size_t size)
 		i++;
 	}
 	return (str);
+}
+
+void			ft_strdel(char **as)
+{
+	if (as != NULL && *as != NULL)
+		if (as != NULL)
+		{
+			free(*as);
+			*as = NULL;
+		}
 }
 
 static int		readline(char **ch, char **line, int fd)
