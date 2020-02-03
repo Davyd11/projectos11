@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-typedef struct	s_flags
+typedef struct	s_flags // para que narices se utiliza esto ?
 {
 	va_list		ap;
 	int			len;
@@ -13,7 +13,7 @@ typedef struct	s_flags
 	int			precision;
 }				t_flags;
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c) //*****************************************************************
 {
 	while (*s)
 	{
@@ -26,7 +26,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-int		ft_strlen(const char *s)
+int		ft_strlen(const char *s) //*****************************************************************
 {
 	int i;
 
@@ -36,7 +36,7 @@ int		ft_strlen(const char *s)
 	return (i);
 }
 
-void	ft_putstr(const char *s)
+void	ft_putstr(const char *s) //*****************************************************************
 {
 	while (*s)
 	{
@@ -105,7 +105,7 @@ void	flag_sorting(const char *format, t_flags *f)
 {
 	while (format[f->i] >= '0' && format[f->i] <= '9')
 	{
-		f->flag_width = 1;
+		f->flag_width = 1; // porque es solo un numero 
 		f->width = f->width * 10 + format[f->i] - '0';
 		f->i++;
 	}
@@ -236,12 +236,6 @@ void	format_int(t_flags *f, char *base)
 	int_printer(f, n, base);
 }
 
-
-
-
-
-
-
 int		hex_nbrlen(unsigned int n, char *base)
 {
 	int baselen;
@@ -307,7 +301,7 @@ void	hex_precision(t_flags *f, int len)
 	}
 }
 
-void	hex_putnbrbase(t_flags *f, unsigned int n, char *base, int baselen)
+void	hex_putnbrbase(t_flags *f, int n, char *base, int baselen)
 {
 	if (n >= baselen)
 	{
@@ -351,14 +345,6 @@ void	format_hex(t_flags *f, char *base)
 	hex_printer(f, n, base);
 }
 
-
-
-
-
-
-
-
-
 void	format_sorting(const char *format, t_flags *f)
 {
 	if (format[f->i] == 's')
@@ -373,7 +359,7 @@ void	format_sorting(const char *format, t_flags *f)
 
 void	percent_finder(const char *format, t_flags *f)
 {
-	while (format[f->i])
+	while (format[f->i]) // mientras exista string que leer...
 	{
 		if (format[f->i] == '%')
 		{
@@ -395,18 +381,19 @@ void	percent_finder(const char *format, t_flags *f)
 
 int		ft_printf(const char *format, ...)
 {
-	t_flags f;
-
+	t_flags f; // aqui declara la variable f que utiliza a lo lago del programa
+	
 	f.len = 0;
 	f.i = 0;
 	va_start(f.ap, format);
-	if (ft_strchr(format, '%'))
+	//***********************************************************printf ("%s", (ft_strchr(format, '%')));
+	if (ft_strchr(format, '%')) // sie encuentra en el imput un %(flags...)
 		percent_finder(format, &f);
 	else
 	{
 		ft_putstr(format);
 		f.len = ft_strlen(format);
-	}	
+	}
 	va_end(f.ap);
 	return (f.len);
 }
@@ -417,6 +404,6 @@ int		main(void)
 	int i = 56;
 	unsigned int x = 0;
 
-	   printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
-	ft_printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
+		//printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
+		ft_printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
 }
