@@ -236,7 +236,7 @@ void	format_int(t_flags *f, char *base)
 	int_printer(f, n, base);
 }
 
-int		hex_nbrlen(unsigned int n, char *base)
+int		hex_nbrlen(int n, char *base)
 {
 	int baselen;
 	int len;
