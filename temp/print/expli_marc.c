@@ -121,7 +121,7 @@ void	flag_sorting(const char *format, t_flags *f)
 	}
 }
 
-int		int_nbrlen(int n, char *base)
+int		int_nbrlen(int n, char *base) //strlen with conditions 
 {
 	int baselen;
 	int len;
@@ -219,7 +219,7 @@ void	format_int(t_flags *f, char *base)
 	int		len;
 	int		n;
 
-	n = va_arg(f->ap, int);
+	n = va_arg(f->ap, int); //takes he value form ap
 	len = int_nbrlen(n, base);
 	if (n < 0 && f->flag_precision)
 		f->precision++;
@@ -345,7 +345,7 @@ void	format_hex(t_flags *f, char *base)
 	hex_printer(f, n, base);
 }
 
-void	format_sorting(const char *format, t_flags *f)
+void	format_sorting(const char *format, t_flags *f) // format tipe and divides the results
 {
 	if (format[f->i] == 's')
 		format_str(f);
@@ -381,19 +381,18 @@ void	percent_finder(const char *format, t_flags *f)
 
 int		ft_printf(const char *format, ...)
 {
-	t_flags f; // aqui declara la variable f que utiliza a lo lago del programa
-	
+	t_flags f;
+
 	f.len = 0;
 	f.i = 0;
 	va_start(f.ap, format);
-	//***********************************************************printf ("%s", (ft_strchr(format, '%')));
-	if (ft_strchr(format, '%')) // sie encuentra en el imput un %(flags...)
+	if (ft_strchr(format, '%'))
 		percent_finder(format, &f);
 	else
 	{
 		ft_putstr(format);
 		f.len = ft_strlen(format);
-	}
+	}	
 	va_end(f.ap);
 	return (f.len);
 }
