@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+         #
+#    By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 15:18:42 by davyd11           #+#    #+#              #
-#    Updated: 2020/01/23 15:19:59 by davyd11          ###   ########.fr        #
+#    Updated: 2020/02/04 16:35:52 by dpuente-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,22 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-NAME = libftprintf.a
+NAME = ft_printf.a
 
 SRC_PATH = ./
-LIB_PATH = ./lib
+LIB_PATH = ../libft
 INC_PATH = ./
 OBJ_PATH = ./objs
 OBJLIB_PATH = ./obj
 
 
-SRC_NAME =	#ft_find_conv.c\
+SRC_NAME =	ft_printf.c\
+			#ft_find_conv.c\
 			#ft_find_flags.c\
 
 
-LIB_NAME = 	#ft_atoi.c\
+LIB_NAME = 	ft_putstr.c\
+			#ft_atoi.c\
 			#ft_bzero.c\
 
 
