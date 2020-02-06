@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/06 13:33:17 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/06 17:39:51 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ typedef struct	s_flags
 	int			i;
 	int			flag_width;
 	int			width;
-	int			flag_precision;
-	int			precision;
-}			t_flags;
+	int			flag_precision;				// What for ?????
+	int			precision;					// What for ?????
+}				t_flags;
 //*********************************************************************************************************
 // FUNCTIONS FROM LIBFT
 //*********************************************************************************************************
@@ -67,6 +67,38 @@ void	flags_to_zero(t_flags *f)
 //*********************************************************************************************************
 // ACTUAL PRINTF CODE
 //*********************************************************************************************************
+/*void int_format(t_flags *f, char *numbs_ten)
+{
+	int n;
+	int len;																// how long is the number
+
+	n = va_arg(f->ap, int);
+	while (n)
+	{
+		if (n >= 48 && n <= 57)
+			write(1, &numbs_ten[n - 48], 1);
+		n++;
+	}
+	
+	len = 0;	
+}*/
+void	single_char(t_flags *f)
+{
+	int t;
+	
+	t = va_arg(f->ap, int);
+	write(1, &t, 1);
+}
+
+void format_sorting(const char *format, t_flags *f)								// send to specific function depending on flag
+{
+	if (format[f->i] == 'c')
+		single_char(f);
+	if (format[f->i] == 'd' || format[f->i] == 'i')
+		int_format(f, "0123456789");
+
+}
+
 void	percent_finder(const char *format, t_flags *f)
 {
 	while (format[f->i]) // mientras exista string que leer...
@@ -75,14 +107,13 @@ void	percent_finder(const char *format, t_flags *f)
 		{
 			f->i++;
 			flags_to_zero(f);
-			if (ft_strchr(".1234567890", format[f->i]))
+			if (ft_strchr(".0123456789", format[f->i]))
 				printf("******numero de espacios...******\n");
 				//flag_sorting(format, f);
-			if (ft_strchr("cdefgiosuxX", format[f->i]))
-				printf("flag (%c)\n", format[f->i]);
-				//format_sorting(format, f);
+			if (ft_strchr("cdefgiosuxX", format[f->i])) 						//mandatory part (cspdiuxX%)
+				format_sorting(format, f);
 		}
-		else 									// prints all text except for the %d ...
+		else 																	// prints all text except for the %d ...
 		{
 			write(1, &format[f->i], 1);
 			f->len++;
@@ -116,7 +147,8 @@ int	main(void)
 
 		//printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
 		//ft_printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
-		printf("\nOriginal: ");
-		printf("Hola que tal estamos 1 %5d 2345\n----------------------\n", 12);
-		ft_printf("Hola que tal estamos 1 %5d 2345\n");
+		printf("\nOriginal: \n");
+		printf("Hola que tal estamos 1 %d 2345\n----------------------\n", 123123);
+		printf("FT_COPY: \n");
+		ft_printf("Hola que tal estamos 1 %d 2345\n", 123123);
 }

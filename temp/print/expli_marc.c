@@ -2,15 +2,15 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-typedef struct	s_flags // para que narices se utiliza esto ?
+typedef struct	s_flags
 {
 	va_list		ap;
 	int			len;
 	int			i;
 	int			flag_width;
 	int			width;
-	int			flag_precision;
-	int			precision;
+	int			flag_precision;							// What for ????
+	int			precision;								// What fot ????
 }				t_flags;
 
 char	*ft_strchr(const char *s, int c) //*****************************************************************
@@ -105,7 +105,7 @@ void	flag_sorting(const char *format, t_flags *f)
 {
 	while (format[f->i] >= '0' && format[f->i] <= '9')
 	{
-		f->flag_width = 1; // porque es solo un numero 
+		f->flag_width = 1; // porque es solo un numero
 		f->width = f->width * 10 + format[f->i] - '0';
 		f->i++;
 	}
@@ -219,7 +219,7 @@ void	format_int(t_flags *f, char *base)
 	int		len;
 	int		n;
 
-	n = va_arg(f->ap, int); //takes he value form ap
+	n = va_arg(f->ap, int); 								//takes he value form arguments
 	len = int_nbrlen(n, base);
 	if (n < 0 && f->flag_precision)
 		f->precision++;
