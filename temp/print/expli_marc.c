@@ -365,7 +365,7 @@ void	percent_finder(const char *format, t_flags *f)
 		{
 			f->i++;
 			flags_to_zero(f);
-			if (ft_strchr(".1234567890", format[f->i]))
+			if (ft_strchr(".1234567890", format[f->i])) 
 				flag_sorting(format, f);
 			if (ft_strchr("sidxX", format[f->i]))
 				format_sorting(format, f);
