@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/07 13:51:05 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:17:19 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,27 @@ void    ft_putnbr(int nb)
 	}
 }
 
+void    ft_putnbrfloat(int nb)
+{
+	long i;
+	/*char *txt;
+
+	txt = "0123456789.";*/
+	i = nb;
+	if (i < 0)
+	{
+		ft_putchar('-');
+		i = i * (-1);
+	}
+	if (i > 9)
+	{
+		ft_putnbrfloat(i / 10);
+		ft_putnbrfloat(i % 10);
+	}
+	else
+		ft_putchar(i + '0');
+}
+
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
@@ -97,23 +118,20 @@ void	flags_to_zero(t_flags *f)
 //*********************************************************************************************************
 void float_format(t_flags *f)
 {
-	float n;
+	double n;
 
-	n = va_arg(f->ap, int);
+	n = va_arg(f->ap, double);
+	printf("------%f------", n);
+	ft_putnbrfloat(n);														// PRINT FLOAT VARIABLES
 }
 
 void int_format(t_flags *f)
 {
-	float n;
-	int nint;
+	int n;
 
 	n = va_arg(f->ap, int);
-	nint = n;
-	printf("%f", n);
-	printf("%d", nint);
-	if(n == nint)
-		ft_putnbr(n);
-	}
+	ft_putnbr(n);
+}
 void	single_char(t_flags *f)
 {
 	int t;
@@ -174,6 +192,17 @@ int		ft_printf(const char *format, ...)
 
 int	main(void)
 {
+	int i;
+	float f;
+	double d;
+	char *ch;
+	char c;
+
+	i = 1234567890;
+	f = 3209.1417;
+	d = 123.456789;
+	c = 'D';
+	ch = "Estamos genial tio";
 	/*char *s = "Mundo";
 	int i = 56;
 	unsigned int x = 0;*/
@@ -181,9 +210,9 @@ int	main(void)
 		//printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
 		//ft_printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
 		printf("\nOriginal: \n");
-		printf("Hola que tal estamos: %f\n----------------------\n", 0.3);
+		printf("Hola que tal estamos: %f\n----------------------\n", f);
 		printf("FT_COPY: \n");
-		ft_printf("Hola que tal estamos: %d\n", 0.3);
+		ft_printf("Hola que tal estamos: %f\n", f);
 }
 
 

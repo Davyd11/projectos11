@@ -400,7 +400,7 @@ int		ft_printf(const char *format, ...)
 int		main(void)
 {
 	char *s = "Mundo";
-	int i = 56;
+	float i = 13.1416;
 	unsigned int x = 0;
 
 		//printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
