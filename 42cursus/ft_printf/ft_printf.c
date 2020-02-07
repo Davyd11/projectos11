@@ -6,12 +6,14 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/06 17:39:51 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/07 13:51:05 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+//*********************************************************************************************************
+// MAIN STRUCT
+//*********************************************************************************************************
 typedef struct	s_flags
 {
 	va_list		ap;
@@ -44,7 +46,33 @@ void	ft_putstr(const char *s)
 	}
 }
 
-char	*ft_strchr(const char *s, int c) //*****************************************************************
+void ft_putchar(char s)
+{
+	write(1, &s, 1);
+}
+
+void    ft_putnbr(int nb)
+{
+	long i;
+
+	i = nb;
+	if (i < 0)
+	{
+			ft_putchar('-');
+			i = i * (-1);
+	}
+	if (i > 9)
+	{
+			ft_putnbr(i / 10);
+			ft_putnbr(i % 10);
+	}
+	else
+	{
+			ft_putchar(i + '0');
+	}
+}
+
+char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
@@ -67,21 +95,25 @@ void	flags_to_zero(t_flags *f)
 //*********************************************************************************************************
 // ACTUAL PRINTF CODE
 //*********************************************************************************************************
-/*void int_format(t_flags *f, char *numbs_ten)
+void float_format(t_flags *f)
 {
-	int n;
-	int len;																// how long is the number
+	float n;
 
 	n = va_arg(f->ap, int);
-	while (n)
-	{
-		if (n >= 48 && n <= 57)
-			write(1, &numbs_ten[n - 48], 1);
-		n++;
+}
+
+void int_format(t_flags *f)
+{
+	float n;
+	int nint;
+
+	n = va_arg(f->ap, int);
+	nint = n;
+	printf("%f", n);
+	printf("%d", nint);
+	if(n == nint)
+		ft_putnbr(n);
 	}
-	
-	len = 0;	
-}*/
 void	single_char(t_flags *f)
 {
 	int t;
@@ -95,8 +127,9 @@ void format_sorting(const char *format, t_flags *f)								// send to specific f
 	if (format[f->i] == 'c')
 		single_char(f);
 	if (format[f->i] == 'd' || format[f->i] == 'i')
-		int_format(f, "0123456789");
-
+		int_format(f);
+	if (format[f->i] == 'f')
+		float_format(f);
 }
 
 void	percent_finder(const char *format, t_flags *f)
@@ -148,7 +181,14 @@ int	main(void)
 		//printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
 		//ft_printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
 		printf("\nOriginal: \n");
-		printf("Hola que tal estamos 1 %d 2345\n----------------------\n", 123123);
+		printf("Hola que tal estamos: %f\n----------------------\n", 0.3);
 		printf("FT_COPY: \n");
-		ft_printf("Hola que tal estamos 1 %d 2345\n", 123123);
+		ft_printf("Hola que tal estamos: %d\n", 0.3);
 }
+
+
+
+
+
+
+//QUE NO IMPRIMA SI %D %I SON FLOATS I NO INTS(IMPRIME CON TODO)
