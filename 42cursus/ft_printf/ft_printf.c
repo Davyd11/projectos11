@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/07 17:17:19 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/10 14:39:20 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void	flags_to_zero(t_flags *f)
 	f->flag_precision = 0;
 	f->precision = 0;
 }
+
 //*********************************************************************************************************
 // ACTUAL PRINTF CODE
 //*********************************************************************************************************
@@ -121,8 +122,9 @@ void float_format(t_flags *f)
 	double n;
 
 	n = va_arg(f->ap, double);
-	printf("------%f------", n);
-	ft_putnbrfloat(n);														// PRINT FLOAT VARIABLES
+	//printf("------%f------", n);				//prints the value that is soposed to be printed
+	ft_putnbrfloat(n);					// PRINT FLOAT VARIABLES
+	//I will need to use the itoa to print decimals 
 }
 
 void int_format(t_flags *f)
@@ -134,10 +136,30 @@ void int_format(t_flags *f)
 }
 void	single_char(t_flags *f)
 {
-	int t;
+	char *t;
 	
-	t = va_arg(f->ap, int);
+	t = va_arg(f->ap, char *);
 	write(1, &t, 1);
+}
+
+void str_format(t_flags *f)
+{
+	char *str;
+	int sum;
+
+	sum = 0;
+	
+	str = va_arg(f->ap, char *);
+	while (str[sum] != '\0')
+	{
+		write(1, &str[sum], 1);
+		sum++;
+	}
+}
+
+void flag_sorting(const char *format, t_flags *f)
+{
+	printf("Entra en las flags, pero hay que hacerlas primero jeje");
 }
 
 void format_sorting(const char *format, t_flags *f)								// send to specific function depending on flag
@@ -148,6 +170,9 @@ void format_sorting(const char *format, t_flags *f)								// send to specific f
 		int_format(f);
 	if (format[f->i] == 'f')
 		float_format(f);
+	if (format[f->i] == 's')
+		str_format(f);
+	
 }
 
 void	percent_finder(const char *format, t_flags *f)
@@ -181,10 +206,13 @@ int		ft_printf(const char *format, ...)
 	f.i = 0;
 	va_start(f.ap, format);
 	if (ft_strchr(format, '%')) 					//go to search  if there is any %
+		// For the flags: run a loop that cheeck for a limited number of character if ther is any flag char
 		percent_finder(format, &f);
 	else											//just print on screen all text(no flags)
+	{
 		ft_putstr(format);
 		f.len = ft_strlen(format);
+	}
 	va_end(f.ap);
 	return (f.len);
 }
@@ -192,16 +220,16 @@ int		ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	int i;
-	float f;
-	double d;
+	//int i;
+	//float f;
+	//double d;
 	char *ch;
-	char c;
+	//char c;
 
-	i = 1234567890;
-	f = 3209.1417;
-	d = 123.456789;
-	c = 'D';
+	//i = 1234567890;
+	//f = 3209.1417;
+	//d = 123.456789;
+	//c = 'D';
 	ch = "Estamos genial tio";
 	/*char *s = "Mundo";
 	int i = 56;
@@ -210,9 +238,9 @@ int	main(void)
 		//printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
 		//ft_printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
 		printf("\nOriginal: \n");
-		printf("Hola que tal estamos: %f\n----------------------\n", f);
+		printf("Hola que tal estamos: %s\n----------------------\n", ch);
 		printf("FT_COPY: \n");
-		ft_printf("Hola que tal estamos: %f\n", f);
+		ft_printf("Hola que tal estamos: %s\n", ch);
 }
 
 
