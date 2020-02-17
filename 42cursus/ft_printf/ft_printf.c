@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/10 14:39:20 by davyd11          ###   ########.fr       */
+/*   Updated: 2020/02/17 17:23:52 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,85 +27,6 @@ typedef struct	s_flags
 //*********************************************************************************************************
 // FUNCTIONS FROM LIBFT
 //*********************************************************************************************************
-int		ft_strlen(const char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-void	ft_putstr(const char *s)
-{
-	while (*s)
-	{
-		write(1, &(*s), 1);
-		s++;
-	}
-}
-
-void ft_putchar(char s)
-{
-	write(1, &s, 1);
-}
-
-void    ft_putnbr(int nb)
-{
-	long i;
-
-	i = nb;
-	if (i < 0)
-	{
-			ft_putchar('-');
-			i = i * (-1);
-	}
-	if (i > 9)
-	{
-			ft_putnbr(i / 10);
-			ft_putnbr(i % 10);
-	}
-	else
-	{
-			ft_putchar(i + '0');
-	}
-}
-
-void    ft_putnbrfloat(int nb)
-{
-	long i;
-	/*char *txt;
-
-	txt = "0123456789.";*/
-	i = nb;
-	if (i < 0)
-	{
-		ft_putchar('-');
-		i = i * (-1);
-	}
-	if (i > 9)
-	{
-		ft_putnbrfloat(i / 10);
-		ft_putnbrfloat(i % 10);
-	}
-	else
-		ft_putchar(i + '0');
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
-	{
-		if (*s == c)
-			return ((char *)s);
-		s++;
-	}
-	if (*s == c)
-		return ((char *)s);
-	return (NULL);
-}
-
 void	flags_to_zero(t_flags *f)
 {
 	f->flag_width = 0;
@@ -113,26 +34,16 @@ void	flags_to_zero(t_flags *f)
 	f->flag_precision = 0;
 	f->precision = 0;
 }
-
 //*********************************************************************************************************
 // ACTUAL PRINTF CODE
 //*********************************************************************************************************
-void float_format(t_flags *f)
-{
-	double n;
-
-	n = va_arg(f->ap, double);
-	//printf("------%f------", n);				//prints the value that is soposed to be printed
-	ft_putnbrfloat(n);					// PRINT FLOAT VARIABLES
-	//I will need to use the itoa to print decimals 
-}
 
 void int_format(t_flags *f)
 {
 	int n;
 
 	n = va_arg(f->ap, int);
-	ft_putnbr(n);
+	ft_putnbr_fd(n, 1);
 }
 void	single_char(t_flags *f)
 {
@@ -160,19 +71,20 @@ void str_format(t_flags *f)
 void flag_sorting(const char *format, t_flags *f)
 {
 	printf("Entra en las flags, pero hay que hacerlas primero jeje");
+	write(1, &format, 0);				///////////////////////////////////////////////////////////////////////////////
+	write(1, &f, 0);					///////////////////////////////////////////////////////////////////////////////
 }
 
 void format_sorting(const char *format, t_flags *f)								// send to specific function depending on flag
 {
 	if (format[f->i] == 'c')
 		single_char(f);
-	if (format[f->i] == 'd' || format[f->i] == 'i')
+	if (format[f->i] == 'd' || format[f->i] == 'i')								// finish the selection to aboid floats
 		int_format(f);
-	if (format[f->i] == 'f')
-		float_format(f);
 	if (format[f->i] == 's')
 		str_format(f);
-	
+	/*if (format[f->i] == 'x')
+		format_base_hexa(f);*/
 }
 
 void	percent_finder(const char *format, t_flags *f)
@@ -186,7 +98,7 @@ void	percent_finder(const char *format, t_flags *f)
 			if (ft_strchr(".0123456789", format[f->i]))
 				printf("******numero de espacios...******\n");
 				//flag_sorting(format, f);
-			if (ft_strchr("cdefgiosuxX", format[f->i])) 						//mandatory part (cspdiuxX%)
+			if (ft_strchr("cdefgiosuxXp", format[f->i])) 						//mandatory part (csgdiuxX%) DONE(c,d,i,f,s)
 				format_sorting(format, f);
 		}
 		else 																	// prints all text except for the %d ...
@@ -198,7 +110,7 @@ void	percent_finder(const char *format, t_flags *f)
 	}
 }
 
-int		ft_printf(const char *format, ...)
+int		ft_printf(char *format, ...)
 {
 	t_flags f;
 
@@ -210,42 +122,13 @@ int		ft_printf(const char *format, ...)
 		percent_finder(format, &f);
 	else											//just print on screen all text(no flags)
 	{
-		ft_putstr(format);
+		ft_putstr_fd(format, 0);
 		f.len = ft_strlen(format);
 	}
 	va_end(f.ap);
 	return (f.len);
 }
 
-
-int	main(void)
-{
-	//int i;
-	//float f;
-	//double d;
-	char *ch;
-	//char c;
-
-	//i = 1234567890;
-	//f = 3209.1417;
-	//d = 123.456789;
-	//c = 'D';
-	ch = "Estamos genial tio";
-	/*char *s = "Mundo";
-	int i = 56;
-	unsigned int x = 0;*/
-
-		//printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
-		//ft_printf("Hola <%10.5s><%7.4i><%x>\n", s, i, x);
-		printf("\nOriginal: \n");
-		printf("Hola que tal estamos: %s\n----------------------\n", ch);
-		printf("FT_COPY: \n");
-		ft_printf("Hola que tal estamos: %s\n", ch);
-}
-
-
-
-
-
-
 //QUE NO IMPRIMA SI %D %I SON FLOATS I NO INTS(IMPRIME CON TODO)
+//LEN OF THE HOLE STRING ...
+//FLAGS//

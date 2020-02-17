@@ -6,7 +6,7 @@
 #    By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 15:18:42 by davyd11           #+#    #+#              #
-#    Updated: 2020/02/04 16:35:52 by dpuente-         ###   ########.fr        #
+#    Updated: 2020/02/17 17:15:55 by dpuente-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,20 +17,22 @@ FLAGS = -Wall -Wextra -Werror
 NAME = ft_printf.a
 
 SRC_PATH = ./
-LIB_PATH = ../libft
+LIB_PATH = libft
 INC_PATH = ./
-OBJ_PATH = ./objs
-OBJLIB_PATH = ./obj
+OBJ_PATH = ./obj
+OBJLIB_PATH = ./objs
 
 
-SRC_NAME =	ft_printf.c\
-			#ft_find_conv.c\
-			#ft_find_flags.c\
+SRC_NAME =	ft_printf.c \
 
 
-LIB_NAME = 	ft_putstr.c\
-			#ft_atoi.c\
-			#ft_bzero.c\
+LIB_NAME = 	ft_strlen.c \
+			ft_putstr_fd.c \
+			ft_bzero.c \
+			ft_putchar_fd.c \
+			ft_putnbr_fd.c \
+			ft_strchr.c
+			
 
 
 INC_NAME = ft_printf.h
@@ -58,12 +60,19 @@ $(OBJLIB_PATH)/%.o: $(LIB_PATH)/%.c
 	@mkdir -p $(OBJLIB_PATH) 2> /dev/null || true
 	@$(CC) -o $@ -c $<
 
+compile:
+	gcc -Wall -Wextra -Werror $(SRC) $(LIB) Main.c
+
 clean:
 	@rm -rf $(OBJ) $(OBJLIB)
 
 fclean: clean
 	@rm -rf ./obj $(NAME)
 	@rm -rf $(OBJ_PATH)
+	@rm -rf *.out
+	@rm -rf $(OBJLIB_PATH)
+	
+	
 
 re: fclean all
 
