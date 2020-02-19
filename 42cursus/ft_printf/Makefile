@@ -6,7 +6,7 @@
 #    By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 15:18:42 by davyd11           #+#    #+#              #
-#    Updated: 2020/02/17 17:15:55 by dpuente-         ###   ########.fr        #
+#    Updated: 2020/02/19 17:57:22 by dpuente-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ OBJLIB_PATH = ./objs
 
 
 SRC_NAME =	ft_printf.c \
+			ft_print_int.c \
+			ft_print_char.c \
+			flag_short.c
 
 
 LIB_NAME = 	ft_strlen.c \
@@ -31,7 +34,9 @@ LIB_NAME = 	ft_strlen.c \
 			ft_bzero.c \
 			ft_putchar_fd.c \
 			ft_putnbr_fd.c \
-			ft_strchr.c
+			ft_strchr.c \
+			ft_atoi.c \
+			ft_nbrlen.c
 			
 
 
