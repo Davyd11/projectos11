@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/11 14:31:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/17 17:08:11 by dpuente-         ###   ########.fr       */
+/*   Created: 2020/02/19 17:25:56 by dpuente-          #+#    #+#             */
+/*   Updated: 2020/02/19 17:26:42 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *str, int fd)
+int     ft_nbrlen(int n)
 {
-	int n;
-
-	n = 0;
-	if (str)
-	{
-		while (str[n] != '\0')
-		{
-			write(fd, &(str[n]), 1);
-			n++;
-		}
-	}
+    int     i;
+    i = 1;
+    if (n < 0)
+    {
+        n = -n;
+        i++;
+    }
+    if (n == 0)
+        return (1);
+    while (n >= 10)
+    {
+        n /= 10;
+        i++;
+    }
+    return (i);
 }

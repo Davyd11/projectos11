@@ -6,11 +6,13 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 11:06:03 by dpuente-          #+#    #+#             */
-/*   Updated: 2019/11/12 11:06:07 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/17 17:11:11 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
 	int num;
 
